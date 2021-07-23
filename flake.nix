@@ -13,19 +13,23 @@
       inherit (nixpkgs) lib;
       inherit (flake-utils.lib) eachDefaultSystem defaultSystems;
 
-      nixpkgsFor = lib.genAttrs defaultSystems (system : import nixpkgs {
+      nixpkgsFor = lib.genAttrs defaultSystems (system: import nixpkgs {
         inherit system;
       });
 
       developEnv = eachDefaultSystem (system:
-      let
-        pkgs = nixpkgsFor.${system};
-      in
-      {
-        devShell = pkgs.mkShell {
-          buildInputs = with pkgs; [ git ];
-        };
-      });
+        let
+          pkgs = nixpkgsFor.${system};
+        in
+        {
+          devShell = pkgs.mkShell {
+            buildInputs = with pkgs; [
+              git
+              nixpkgs-fmt
+              pre-commit
+            ];
+          };
+        });
 
       myConfig = {
         nixosConfigurations.mercury = lib.nixosSystem {
