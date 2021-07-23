@@ -1,4 +1,3 @@
-{ ... }:
 {
   users.users.nicolas = {
     isNormalUser = true;

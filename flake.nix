@@ -32,10 +32,16 @@
         });
 
       myConfig = {
-        nixosConfigurations.mercury = lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [ ./configuration.nix ];
-        };
+        nixosConfigurations =
+          let
+            nixosSystem = hostName:
+              lib.nixosSystem {
+                system = "x86_64-linux";
+                modules = [ "./${hostName}" ];
+              };
+            hostNames = builtins.attrNames (lib.filterAttrs (n: v: v == "directory") (builtins.readDir ./hosts));
+          in
+          lib.genAttrs hostNames nixosSystem;
       };
 
     in
