@@ -37,7 +37,7 @@
             nixosSystem = hostName:
               lib.nixosSystem {
                 system = "x86_64-linux";
-                modules = [ "./${hostName}" ];
+                modules = [ (./. + "/hosts/${hostName}") ];
               };
             hostNames = builtins.attrNames (lib.filterAttrs (n: v: v == "directory") (builtins.readDir ./hosts));
           in
