@@ -11,6 +11,7 @@
         modifier = "Mod4";
         menu = "${pkgs.bemenu}/bin/bemenu-run -l 10 -i -p '>' -m 1";
         startup = [
+          { command = "${pkgs.swayidle}/bin/swayidle -w timeout 300 'swaymsg \"output * dpms off\"' resume 'swaymsg \"output * dpms on\"'"; }
           { command = "${pkgs.xfce.thunar}/bin/thunar --daemon"; }
           { command = "${pkgs.mako}/bin/mako"; }
           { command = "systemctl --user import-environment XDG_SESSION_TYPE XDG_CURRENT_DESKTOP"; }
