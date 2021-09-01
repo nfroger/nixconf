@@ -53,12 +53,6 @@
     tmux
   ];
 
-  programs.zsh.enable = true;
-  programs.zsh.ohMyZsh.enable = true;
-  programs.zsh.autosuggestions.enable = true;
-  programs.zsh.ohMyZsh.theme = "gallifrey";
-  programs.zsh.ohMyZsh.plugins = [ "git" ];
-
   programs.neovim.vimAlias = true;
 
   environment.shellInit = ''

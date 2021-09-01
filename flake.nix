@@ -37,7 +37,15 @@
             nixosSystem = hostName:
               lib.nixosSystem {
                 system = "x86_64-linux";
-                modules = [ (./. + "/hosts/${hostName}") ];
+                modules = [
+                  (./. + "/hosts/${hostName}")
+                  home-manager.nixosModules.home-manager
+                  {
+                    home-manager.useGlobalPkgs = true;
+                    home-manager.useUserPackages = true;
+                    home-manager.users.nicolas = import ./home.nix;
+                  }
+                ];
               };
             hostNames = builtins.attrNames (lib.filterAttrs (n: v: v == "directory") (builtins.readDir ./hosts));
           in
