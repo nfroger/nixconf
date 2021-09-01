@@ -2,17 +2,27 @@
 
 {
   fonts.fonts = with pkgs; [
-    source-code-pro font-awesome noto-fonts-emoji overpass roboto
+    source-code-pro
+    font-awesome
+    noto-fonts-emoji
+    overpass
+    roboto
   ];
 
   environment.systemPackages = with pkgs; [
     lxappearance
-    arc-theme arc-icon-theme capitaine-cursors
+    arc-theme
+    arc-icon-theme
+    capitaine-cursors
     pavucontrol
-    libva libva-utils
-    gtk-engine-murrine gtk_engines gsettings-desktop-schemas
+    libva
+    libva-utils
+    gtk-engine-murrine
+    gtk_engines
+    gsettings-desktop-schemas
     xdg-utils
-    xfce.thunar xfce.thunar-volman
+    xfce.thunar
+    xfce.thunar-volman
   ];
 
   xdg.mime.enable = true;
@@ -24,19 +34,31 @@
   programs.sway = {
     enable = true;
     extraPackages = with pkgs; [
-      swaylock swayidle waybar bemenu xwayland alacritty
-      gammastep mako wl-clipboard grim slurp imv handlr
-      playerctl xdg-desktop-portal-wlr
+      swaylock
+      swayidle
+      waybar
+      bemenu
+      xwayland
+      alacritty
+      gammastep
+      mako
+      wl-clipboard
+      grim
+      slurp
+      imv
+      handlr
+      playerctl
+      xdg-desktop-portal-wlr
     ];
     extraSessionCommands = ''
-      export SDL_VIDEODRIVER=wayland
-    # needs qt5.qtwayland in systemPackages
-      export QT_QPA_PLATFORM=wayland
-      export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
-    # Fix for some Java AWT applications (e.g. Android Studio),
-    # use this if they aren't displayed properly:
-      export _JAVA_AWT_WM_NONREPARENTING=1
-      export BEMENU_BACKEND=wayland
+        export SDL_VIDEODRIVER=wayland
+      # needs qt5.qtwayland in systemPackages
+        export QT_QPA_PLATFORM=wayland
+        export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
+      # Fix for some Java AWT applications (e.g. Android Studio),
+      # use this if they aren't displayed properly:
+        export _JAVA_AWT_WM_NONREPARENTING=1
+        export BEMENU_BACKEND=wayland
     '';
     wrapperFeatures.gtk = true;
   };

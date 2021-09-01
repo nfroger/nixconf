@@ -38,17 +38,35 @@
   services.printing.drivers = [ pkgs.brlaser ];
 
   environment.systemPackages = with pkgs; [
-    coreutils-full file tree htop unzip zip p7zip killall
+    coreutils-full
+    file
+    tree
+    htop
+    unzip
+    zip
+    p7zip
+    killall
     manpages
-    cifs-utils ntfs3g
-    ldns wget neovim curl git fzf
-    gnupg yubikey-manager
+    cifs-utils
+    ntfs3g
+    ldns
+    wget
+    neovim
+    curl
+    git
+    fzf
+    gnupg
+    yubikey-manager
     neofetch
     jq
     glib
     zathura
     irssi
-    vault packer awscli terraform_0_15 ansible
+    vault
+    packer
+    awscli
+    terraform_0_15
+    ansible
     kubectl
     tmux
   ];
@@ -56,9 +74,9 @@
   programs.neovim.vimAlias = true;
 
   environment.shellInit = ''
-  export GPG_TTY="$(tty)"
-  gpg-connect-agent /bye
-  export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
+    export GPG_TTY="$(tty)"
+    gpg-connect-agent /bye
+    export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
   '';
 
   programs.ssh.startAgent = false;
