@@ -1,62 +1,83 @@
 { pkgs, config, ... }:
 
 {
-  wayland.windowManager.sway = {
-    enable = true;
-    config = {
-      modifier = "Mod4";
-      menu = "${pkgs.bemenu}/bin/bemenu-run -l 10 -i -p '>' -m 1";
-      startup = [
-        { command = "${pkgs.xfce.thunar}/bin/thunar --daemon"; }
-        { command = "${pkgs.mako}/bin/mako"; }
-        { command = "systemctl --user import-environment XDG_SESSION_TYPE XDG_CURRENT_DESKTOP"; }
-        { command = "dbus-update-activation-environment WAYLAND_DISPLAY"; }
-        { command = "systemctl --user import-environment WAYLAND_DISPLAY DISPLAY DBUS_SESSION_BUS_ADDRESS SWAYSOCK"; }
-      ];
-      terminal = "${pkgs.alacritty}/bin/alacritty";
-      bars = [ ]; # empty because waybar is launched by systemd
-      gaps = {
-        inner = 10;
-        outer = 5;
-      };
-      input = {
-        "type:pointer" = {
-          accel_profile = "flat";
-        };
-        "type:keyboard" = {
-          xkb_layout = "us";
-          xkb_options = "compose:rctrl";
-          xkb_variant = "altgr-intl";
-        };
-      };
-      output = {
-        "*" = {
-          bg = (builtins.fetchurl {
-            url = https://static.k8s.kektus.xyz/uploads/iss063e034054.jpg;
-            sha256 = "0fd43jgl4b2j8dyv800fvqzfijjsr48khapw11s75vc19glwrkab";
-          }) + " fill";
-        };
-      };
-      window = {
-        hideEdgeBorders = "both";
-        commands = [
-          {
-            criteria = {
-              title = "win0";
-              class = "jetbrains-idea-ce";
-            };
-            command = "floating enable";
-          }
-          {
-            criteria = {
-              title = "Welcome to IntelliJ IDEA";
-            };
-            command = "floating enable";
-          }
+  wayland.windowManager.sway =
+    let
+      sysmenu = "system:  [l]ogout  [p]oweroff  [r]eboot [s]uspend";
+    in
+    {
+      enable = true;
+      config = {
+        modifier = "Mod4";
+        menu = "${pkgs.bemenu}/bin/bemenu-run -l 10 -i -p '>' -m 1";
+        startup = [
+          { command = "${pkgs.xfce.thunar}/bin/thunar --daemon"; }
+          { command = "${pkgs.mako}/bin/mako"; }
+          { command = "systemctl --user import-environment XDG_SESSION_TYPE XDG_CURRENT_DESKTOP"; }
+          { command = "dbus-update-activation-environment WAYLAND_DISPLAY"; }
+          { command = "systemctl --user import-environment WAYLAND_DISPLAY DISPLAY DBUS_SESSION_BUS_ADDRESS SWAYSOCK"; }
         ];
+        terminal = "${pkgs.alacritty}/bin/alacritty";
+        bars = [ ]; # empty because waybar is launched by systemd
+        gaps = {
+          inner = 10;
+          outer = 5;
+        };
+        input = {
+          "type:pointer" = {
+            accel_profile = "flat";
+          };
+          "type:keyboard" = {
+            xkb_layout = "us";
+            xkb_options = "compose:rctrl";
+            xkb_variant = "altgr-intl";
+          };
+        };
+        output = {
+          "*" = {
+            bg = (builtins.fetchurl {
+              url = https://static.k8s.kektus.xyz/uploads/iss063e034054.jpg;
+              sha256 = "0fd43jgl4b2j8dyv800fvqzfijjsr48khapw11s75vc19glwrkab";
+            }) + " fill";
+          };
+        };
+        window = {
+          hideEdgeBorders = "both";
+          commands = [
+            {
+              criteria = {
+                title = "win0";
+                class = "jetbrains-idea-ce";
+              };
+              command = "floating enable";
+            }
+            {
+              criteria = {
+                title = "Welcome to IntelliJ IDEA";
+              };
+              command = "floating enable";
+            }
+          ];
+        };
+        modes = {
+          "${sysmenu}" = {
+            l = "exit";
+            p = "exec poweroff";
+            r = "exec reboot";
+            s = "exec systemctl suspend;mode default";
+            Return = "mode default";
+            Escape = "mode default";
+          };
+        };
+        keybindings =
+          let
+            modifier = config.wayland.windowManager.sway.config.modifier;
+          in
+          {
+            "${modifier}+Delete" = "mode \"${sysmenu}\"";
+          };
       };
     };
-  };
 
   programs.alacritty = {
     enable = true;
