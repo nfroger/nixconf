@@ -71,6 +71,9 @@
     ansible
     kubectl
     tmux
+    firefox
+    discord
+    slack
   ];
 
   programs.neovim.vimAlias = true;
