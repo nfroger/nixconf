@@ -94,5 +94,22 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  krb5 = {
+    enable = true;
+    libdefaults = {
+      default_realm = "CRI.EPITA.FR";
+      dns_fallback = true;
+      dns_canonicalize_hostname = false;
+      rnds = false;
+      forwardable = true;
+    };
+
+    realms = {
+      "CRI.EPITA.FR" = {
+        admin_server = "kerberos.pie.cri.epita.fr";
+      };
+    };
+  };
+
   system.stateVersion = "21.05";
 }
