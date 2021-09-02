@@ -38,6 +38,7 @@
               lib.nixosSystem {
                 system = "x86_64-linux";
                 modules = [
+                  ./modules
                   (./. + "/hosts/${hostName}")
                   home-manager.nixosModules.home-manager
                   {

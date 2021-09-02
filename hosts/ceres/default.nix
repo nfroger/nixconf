@@ -6,4 +6,6 @@
   ];
 
   networking.hostName = "ceres";
+
+  kektus.laptop.enable = true;
 }

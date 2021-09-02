@@ -6,4 +6,6 @@
   ];
 
   networking.hostName = "mars";
+
+  kektus.laptop.enable = true;
 }
