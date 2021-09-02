@@ -91,4 +91,7 @@
     XDG_SESSION_TYPE = "wayland";
     XDG_CURRENT_DESKTOP = "sway";
   };
+
+  services.tumbler.enable = true;
+  services.xserver.desktopManager.xfce.thunarPlugins = with pkgs; [ xfce.tumbler ];
 }
