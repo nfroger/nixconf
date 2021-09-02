@@ -9,7 +9,7 @@
 
   networking.hostName = "callisto";
 
-  networking.interfaces.eno1.useDHCP = true; # TODO: check if name
+  networking.interfaces.eno1.useDHCP = false;
   networking.interfaces.br0.useDHCP = true;
   networking.bridges = {
     br0 = {
@@ -52,7 +52,6 @@
     cryptlvm = {
       device = "/dev/disk/by-uuid/52194682-fb5b-4ab9-b23c-3486604bdcf9";
       preLVM = false;
-      #postOpenCommands = "lvscan"; # TODO: check if necessary
     };
   };
 
@@ -94,7 +93,6 @@
   # TODO: put in common file
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
 
   system.stateVersion = "21.05";
 }
