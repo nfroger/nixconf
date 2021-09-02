@@ -16,6 +16,8 @@
   documentation.dev.enable = true;
   time.timeZone = "Europe/Paris";
 
+  networking.useDHCP = false;
+
   nixpkgs.config.allowUnfree = true;
 
   nix = {
