@@ -9,7 +9,7 @@
       enable = true;
       config = {
         modifier = "Mod4";
-        menu = "${pkgs.bemenu}/bin/bemenu-run -l 10 -i -p '>' -m 1";
+        menu = "${pkgs.bemenu}/bin/bemenu-run -l 10 -i -p '>' -m -2";
         startup = [
           { command = "${pkgs.swayidle}/bin/swayidle -w timeout 300 'swaymsg \"output * dpms off\"' resume 'swaymsg \"output * dpms on\"'"; }
           { command = "${pkgs.xfce.thunar}/bin/thunar --daemon"; }
