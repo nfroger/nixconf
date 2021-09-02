@@ -1,25 +1,27 @@
 {
+  # Desktop at CRI
+
   imports = [
     ../../common.nix
   ];
 
-  networking.hostName = "mercury";
+  networking.hostName = "callisto";
 
-  networking.interfaces.enp3s0.useDHCP = true;
+  networking.interfaces.eno1.useDHCP = true; # TODO: check if name
   networking.interfaces.br0.useDHCP = true;
   networking.bridges = {
     br0 = {
-      interfaces = [ "enp3s0" ];
+      interfaces = [ "eno1" ];
     };
   };
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ehci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" "sr_mod" ];
-  boot.initrd.kernelModules = [ "dm-snapshot" "dm-mod" "dm-cache" "dm-cache-smq" "dm-thin-pool" "raid1" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "ehci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" "sr_mod" ];
+  boot.initrd.kernelModules = [ "dm-snapshot" "dm-mod" "dm-cache" "dm-cache-smq" "dm-thin-pool" "dm-raid" "raid1" "dm-crypt" ];
   boot.kernelModules = [ "kvm-intel" "vfio_pci" "vfio" "vfio_iommu_type1" "vfio_virqfd" ];
   boot.extraModulePackages = [ ];
-  boot.kernelParams = [ "intel_iommu=on" "iommu=pt" "vfio-pci.ids=10de:13c2,10de:0fbb" ];
+  boot.kernelParams = [ "intel_iommu=on" "iommu=pt" "vfio-pci.ids=10de:1c81,10de:0fb9" ];
   boot.extraModprobeConfig = ''
-    options vfio-pci ids=10de:13c2,10de:0fbb
+    options vfio-pci ids=10de:1c81,10de:0fb9
     options kvm_intel nested=1
   '';
   boot.kernel.sysctl = {
@@ -42,26 +44,30 @@
     echo "global/thin_repair_executable = "$(which thin_repair)"" >> /etc/lvm/lvm.conf
   '';
 
-  boot.initrd.mdadmConf = ''
-    ARRAY /dev/md/Raid1Lvm  metadata=1.2 UUID=7e4af654:59346547:b73345ac:ea3002d3 name=any:Raid1Lvm
-    ARRAY /dev/md/Raid1Swap  metadata=1.2 UUID=6b2e5afc:43e07a13:eba3cbb5:8441e5d7 name=any:Raid1Swap
-  '';
   services.lvm.boot.thin.enable = true;
+
+  boot.initrd.luks.devices = {
+    cryptlvm = {
+      device = "/dev/disk/by-uuid/52194682-fb5b-4ab9-b23c-3486604bdcf9";
+      preLVM = false;
+      #postOpenCommands = "lvscan"; # TODO: check if necessary
+    };
+  };
 
   fileSystems."/" =
     {
-      device = "/dev/disk/by-uuid/d1b43f5d-1d46-4517-8a86-ee45abd266bd";
+      device = "/dev/disk/by-uuid/9258c3c0-4ae9-4a22-87d8-506b92e91149";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
     {
-      device = "/dev/disk/by-uuid/03DA-0074";
+      device = "/dev/disk/by-uuid/25E3-2BED";
       fsType = "vfat";
     };
 
   swapDevices =
-    [{ device = "/dev/disk/by-uuid/52780eb3-01ea-4ed4-928d-b79da50225f2"; }];
+    [{ device = "/dev/disk/by-uuid/397ee699-cd16-48fd-b9ed-d088099501d8"; }];
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand";
 
@@ -72,8 +78,8 @@
     user = "nicolas"
     group = "kvm"
     cgroup_device_acl = [
-        "/dev/input/by-id/usb-04d9_USB-HID_Keyboard-event-kbd",
-        "/dev/input/by-id/usb-093a_USB_OPTICAL_MOUSE-event-mouse",
+        "/dev/input/by-id/usb-_USB_Keyboard-event-kbd",
+        "/dev/input/by-id/usb-PixArt_USB_Optical_Mouse-event-mouse",
         "/dev/null", "/dev/full", "/dev/zero",
         "/dev/random", "/dev/urandom",
         "/dev/ptmx", "/dev/kvm", "/dev/kqemu",
