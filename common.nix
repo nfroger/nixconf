@@ -27,10 +27,15 @@
     '';
   };
 
+  # Use the systemd-boot EFI boot loader.
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+
   services.openssh.enable = true;
 
   services.avahi.enable = true;
   services.avahi.nssmdns = true;
+
   services.pcscd.enable = true;
 
   services.gvfs.enable = true;

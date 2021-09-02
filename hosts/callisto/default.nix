@@ -90,10 +90,6 @@
 
   virtualisation.docker.enable = true;
 
-  # TODO: put in common file
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
   krb5 = {
     enable = true;
     libdefaults = {
