@@ -89,6 +89,7 @@
           lib.mkOptionDefault
             {
               "${modifier}+Delete" = "mode \"${sysmenu}\"";
+              "${modifier}+L" = "exec swaylock -F -e -l -c 212121 --indicator-idle-visible";
             };
       };
     };
