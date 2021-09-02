@@ -331,5 +331,12 @@
       theme = "gallifrey";
       plugins = [ "git" ];
     };
+    shellAliases = {
+      cat = "bat";
+    };
+  };
+
+  programs.bat = {
+    enable = true;
   };
 }
