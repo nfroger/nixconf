@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, config, lib, ... }:
 
 {
   wayland.windowManager.sway =
@@ -74,9 +74,10 @@
           let
             modifier = config.wayland.windowManager.sway.config.modifier;
           in
-          {
-            "${modifier}+Delete" = "mode \"${sysmenu}\"";
-          };
+          lib.mkOptionDefault
+            {
+              "${modifier}+Delete" = "mode \"${sysmenu}\"";
+            };
       };
     };
 
