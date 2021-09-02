@@ -1,3 +1,5 @@
+{ pkgs, lib, ... }:
+
 {
   # Desktop at CRI
 
@@ -15,7 +17,7 @@
     };
   };
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ehci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" "sr_mod" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "ehci_pci" "ata_piix" "ahci" "usbhid" "usb_storage" "sd_mod" "sr_mod" ];
   boot.initrd.kernelModules = [ "dm-snapshot" "dm-mod" "dm-cache" "dm-cache-smq" "dm-thin-pool" "dm-raid" "raid1" "dm-crypt" ];
   boot.kernelModules = [ "kvm-intel" "vfio_pci" "vfio" "vfio_iommu_type1" "vfio_virqfd" ];
   boot.extraModulePackages = [ ];
@@ -56,18 +58,18 @@
 
   fileSystems."/" =
     {
-      device = "/dev/disk/by-uuid/9258c3c0-4ae9-4a22-87d8-506b92e91149";
+      device = "/dev/disk/by-uuid/a20e412a-1cd5-4ce7-bc4f-7f694def134e";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
     {
-      device = "/dev/disk/by-uuid/25E3-2BED";
+      device = "/dev/disk/by-uuid/F337-51EB";
       fsType = "vfat";
     };
 
   swapDevices =
-    [{ device = "/dev/disk/by-uuid/397ee699-cd16-48fd-b9ed-d088099501d8"; }];
+    [{ device = "/dev/disk/by-uuid/ea313758-ab4b-45c6-bb88-1a87d7e6b4dc"; }];
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand";
 
@@ -88,4 +90,11 @@
   '';
 
   virtualisation.docker.enable = true;
+
+  # TODO: put in common file
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+
+
+  system.stateVersion = "21.05";
 }
