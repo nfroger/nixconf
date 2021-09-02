@@ -1,4 +1,6 @@
 {
+  # Main desktop
+
   imports = [
     ../../common.nix
   ];
