@@ -13,7 +13,7 @@ A test virtual machine can be built to test the configuration. Simply run
 * Boot the NixOS live image
 * Load the necessary kernel modules using modprobe (dm-cache, dm-raid...)
 * Partition the disk
-* Mount root at ``/mnt`` and esp at ``/boot``
+* Mount root at ``/mnt`` and esp at ``/mnt/boot``
 * Clone this repo
 * Run ``nixos-generate-config`` and adjust host config according to the
     generated files
