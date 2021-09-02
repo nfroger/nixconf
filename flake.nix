@@ -43,7 +43,12 @@
                   {
                     home-manager.useGlobalPkgs = true;
                     home-manager.useUserPackages = true;
-                    home-manager.users.nicolas = import ./home.nix;
+                    home-manager.users.nicolas = {
+                      imports = [
+                        ./home.nix
+                        "${toString ./.}/hosts/${hostName}/home-override.nix"
+                      ];
+                    };
                   }
                 ];
               };
