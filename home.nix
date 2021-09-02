@@ -336,6 +336,11 @@
     };
   };
 
+  programs.direnv = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
   programs.bat = {
     enable = true;
   };
