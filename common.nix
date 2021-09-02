@@ -78,6 +78,8 @@
 
   programs.neovim.vimAlias = true;
 
+  services.udev.packages = [ pkgs.yubikey-personalization ];
+
   environment.shellInit = ''
     export GPG_TTY="$(tty)"
     gpg-connect-agent /bye
