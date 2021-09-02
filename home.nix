@@ -345,6 +345,7 @@
     };
     shellAliases = {
       cat = "bat";
+      ls = "ls -hN --color=auto --group-directories-first";
     };
   };
 
