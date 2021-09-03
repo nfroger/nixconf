@@ -80,6 +80,7 @@
     kubectl
     tmux
     firefox
+    thunderbird
     discord
     slack
   ];
