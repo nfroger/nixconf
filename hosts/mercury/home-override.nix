@@ -1,5 +1,5 @@
 {
-  wayland.windowManager.sway = {
+  wayland.windowManager.sway.config = {
     output = {
       DP-1 = {
         position = "0,0";
