@@ -65,8 +65,6 @@
   swapDevices =
     [{ device = "/dev/disk/by-uuid/52780eb3-01ea-4ed4-928d-b79da50225f2"; }];
 
-  powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand";
-
   virtualisation.libvirtd.enable = true;
   virtualisation.libvirtd.qemuOvmf = true;
   virtualisation.libvirtd.allowedBridges = [ "br0" ];

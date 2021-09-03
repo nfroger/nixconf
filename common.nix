@@ -19,6 +19,8 @@
 
   networking.useDHCP = false;
 
+  powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand";
+
   nixpkgs.config.allowUnfree = true;
 
   nix = {
