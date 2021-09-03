@@ -19,3 +19,7 @@ A test virtual machine can be built to test the configuration. Simply run
     generated files
 * Run ``nix-shell -p nixUnstable --run "nix --experimental-features 'nix-command flakes' build .#nixosConfigurations.${hostname}.config.system.build.toplevel"``
 * Run ``nixos-install --system ./result``
+
+# Updating
+
+To update a running system, use ``nixos-rebuild --flake .#${hostname}``.
