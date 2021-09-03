@@ -78,6 +78,7 @@
     terraform_0_15
     ansible
     kubectl
+    minio-client
     tmux
     thunderbird
     discord
