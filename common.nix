@@ -158,4 +158,6 @@
     enable = true;
     enableSSHSupport = true;
   };
+
+  networking.wireguard.enable = true;
 }
