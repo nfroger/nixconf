@@ -90,6 +90,7 @@
             {
               "${modifier}+Delete" = "mode \"${sysmenu}\"";
               "${modifier}+L" = "exec swaylock -F -e -l -c 212121 --indicator-idle-visible";
+              Print = "exec ${pkgs.grim}/bin/grim -g \"$(${pkgs.slurp}/bin/slurp)\" - | wl-copy";
             };
       };
     };
