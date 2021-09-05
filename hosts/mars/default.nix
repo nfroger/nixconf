@@ -2,10 +2,9 @@
   # Dell XPS 15
 
   imports = [
-    ../../common.nix
+    ../../profiles/core.nix
+    ../../profiles/laptop.nix
   ];
 
   networking.hostName = "mars";
-
-  kektus.laptop.enable = true;
 }

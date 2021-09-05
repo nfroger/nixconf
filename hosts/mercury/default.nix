@@ -2,7 +2,8 @@
   # Main desktop
 
   imports = [
-    ../../common.nix
+    ../../profiles/core.nix
+    ../../profiles/desktop.nix
   ];
 
   networking.hostName = "mercury";

@@ -2,7 +2,8 @@
   # Thinkpad X220
 
   imports = [
-    ../../common.nix
+    ../../profiles/core.nix
+    ../../profiles/laptop.nix
   ];
 
   boot.initrd.availableKernelModules = [ "ehci_pci" "ahci" "usb_storage" "sd_mod" "sdhci_pci" ];
@@ -33,8 +34,6 @@
 
   swapDevices =
     [{ device = "/dev/disk/by-uuid/a7bda4f2-1adf-4146-9129-63dc2b3ebb62"; }];
-
-  kektus.laptop.enable = true;
 
   system.stateVersion = "21.05";
 }

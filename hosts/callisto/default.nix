@@ -4,7 +4,8 @@
   # Desktop at CRI
 
   imports = [
-    ../../common.nix
+    ../../profiles/core.nix
+    ../../profiles/desktop.nix
   ];
 
   networking.hostName = "callisto";

@@ -34,18 +34,32 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  services.openssh.enable = true;
-
+  # Services
   services.avahi.enable = true;
   services.avahi.nssmdns = true;
-
-  services.pcscd.enable = true;
-
   services.gvfs.enable = true;
-
-  # Enable CUPS to print documents.
+  services.openssh.enable = true;
+  services.pcscd.enable = true; # Smartcard support
   services.printing.enable = true;
   services.printing.drivers = [ pkgs.brlaser ];
+
+  programs.neovim.vimAlias = true;
+
+  services.udev.packages = [ pkgs.yubikey-personalization ];
+
+  environment.shellInit = ''
+    export GPG_TTY="$(tty)"
+    gpg-connect-agent /bye
+    export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
+  '';
+
+  programs.ssh.startAgent = false;
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
+
+  networking.wireguard.enable = true;
 
   environment.systemPackages = with pkgs; [
     coreutils-full
@@ -143,22 +157,4 @@
       };
     })
   ];
-
-  programs.neovim.vimAlias = true;
-
-  services.udev.packages = [ pkgs.yubikey-personalization ];
-
-  environment.shellInit = ''
-    export GPG_TTY="$(tty)"
-    gpg-connect-agent /bye
-    export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
-  '';
-
-  programs.ssh.startAgent = false;
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-  };
-
-  networking.wireguard.enable = true;
 }

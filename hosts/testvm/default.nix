@@ -1,6 +1,6 @@
 {
   imports = [
-    ../../common.nix
+    ../../profiles/core.nix
   ];
 
   networking.hostName = "testvm";

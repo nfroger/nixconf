@@ -10,5 +10,6 @@
   services.pipewire.enable = true;
   environment.systemPackages = with pkgs; [
     apulse
+    pavucontrol
   ];
 }
