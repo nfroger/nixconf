@@ -39,5 +39,10 @@
   swapDevices =
     [{ device = "/dev/disk/by-uuid/a7bda4f2-1adf-4146-9129-63dc2b3ebb62"; }];
 
+  services.udev.extraHwdb = ''
+    touchpad:i8042:*
+     LIBINPUT_MODEL_LENOVO_X220_TOUCHPAD_FW81=1
+  '';
+
   system.stateVersion = "21.05";
 }
