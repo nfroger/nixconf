@@ -13,6 +13,7 @@
   boot.initrd.kernelModules = [ "dm-snapshot" "dm-crypt" ];
   boot.kernelModules = [ "kvm-intel" "tp_smapi" ];
   boot.extraModulePackages = with config.boot.kernelPackages; [ tp_smapi ];
+  hardware.enableRedistributableFirmware = true;
 
   networking.hostName = "ceres";
 
