@@ -6,9 +6,10 @@
     nixpkgsMaster.url = "github:NixOS/nixpkgs/master";
     home-manager.url = "github:nix-community/home-manager";
     flake-utils.url = "github:numtide/flake-utils";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
-  outputs = { self, nixpkgs, nixpkgsMaster, home-manager, flake-utils }:
+  outputs = { self, nixpkgs, nixpkgsMaster, home-manager, flake-utils, nixos-hardware }:
     let
       inherit (nixpkgs) lib;
       inherit (flake-utils.lib) eachDefaultSystem defaultSystems;
@@ -37,6 +38,9 @@
             nixosSystem = hostName:
               lib.nixosSystem {
                 system = "x86_64-linux";
+                specialArgs = {
+                  inherit nixos-hardware;
+                };
                 modules = [
                   ./modules
                   (./. + "/hosts/${hostName}")
