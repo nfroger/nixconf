@@ -1,15 +1,18 @@
+{ config, nixos-hardware, ... }:
+
 {
   # Thinkpad X220
 
   imports = [
     ../../profiles/core.nix
     ../../profiles/laptop.nix
+    nixos-hardware.nixosModules.common-cpu-intel-sandy-bridge
   ];
 
   boot.initrd.availableKernelModules = [ "ehci_pci" "ahci" "usb_storage" "sd_mod" "sdhci_pci" ];
   boot.initrd.kernelModules = [ "dm-snapshot" "dm-crypt" ];
-  boot.kernelModules = [ "kvm-intel" ];
-  boot.extraModulePackages = [ ];
+  boot.kernelModules = [ "kvm-intel" "tp_smapi" ];
+  boot.extraModulePackages = with config.boot.kernelPackages; [ tp_smapi ];
 
   networking.hostName = "ceres";
 
