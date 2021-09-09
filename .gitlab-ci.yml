@@ -4,6 +4,10 @@ default:
 stages:
   - qa
 
+before_script:
+  - mkdir -p /etc/nix
+  - cat "${NIX_CONF}" > /etc/nix/nix.conf
+
 
 # Lint
 
