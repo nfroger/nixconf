@@ -1,0 +1,29 @@
+default:
+  image: nixpkgs/nix-flakes
+
+stages:
+  - qa
+
+
+# Lint
+
+check:
+  stage: qa
+  needs: []
+  script:
+    - nix flake show
+
+fmt:
+  stage: qa
+  needs: []
+  script:
+    - nix profile install 'nixpkgs#nixpkgs-fmt' 'nixpkgs#findutils'
+    - nixpkgs-fmt --check $(find -name \*.nix)
+  after_script:
+    - nixpkgs-fmt $(find -name \*.nix)
+    - git diff | tee nixpkgs-fmt.diff
+  artifacts:
+    when: on_failure
+    expose_as: "nixpkgs-fmt diff"
+    paths:
+      - nixpkgs-fmt.diff
