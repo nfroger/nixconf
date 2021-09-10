@@ -92,6 +92,10 @@
     terraform_0_15
     ansible
     kubectl
+    kubectx
+    kubernetes-helm
+    azure-cli
+    krew
     minio-client
     tmux
     thunderbird
