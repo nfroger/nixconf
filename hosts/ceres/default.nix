@@ -7,6 +7,8 @@
     ../../profiles/core.nix
     ../../profiles/laptop.nix
     nixos-hardware.nixosModules.common-cpu-intel-sandy-bridge
+    nixos-hardware.nixosModules.common-pc-laptop
+    nixos-hardware.nixosModules.common-pc-laptop-ssd
   ];
 
   boot.initrd.availableKernelModules = [ "ehci_pci" "ahci" "usb_storage" "sd_mod" "sdhci_pci" ];
