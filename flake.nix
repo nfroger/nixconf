@@ -50,7 +50,7 @@
                     home-manager.useUserPackages = true;
                     home-manager.users.nicolas = {
                       imports = [
-                        ./home.nix
+                        ./home
                         "${toString ./.}/hosts/${hostName}/home-override.nix"
                       ];
                     };
