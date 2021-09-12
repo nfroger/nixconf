@@ -80,6 +80,8 @@
               "${modifier}+Delete" = "mode \"${sysmenu}\"";
               "${modifier}+l" = "exec swaylock -F -e -l -c 212121 --indicator-idle-visible";
               Print = "exec ${pkgs.grim}/bin/grim -g \"$(${pkgs.slurp}/bin/slurp)\" - | wl-copy";
+              XF86MonBrightnessDown = "exec ${pkgs.brightnessctl}/bin/brightnessctl set 10%-";
+              XF86MonBrightnessUp = "exec ${pkgs.brightnessctl}/bin/brightnessctl set +10%";
             };
       };
     };

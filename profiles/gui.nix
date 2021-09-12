@@ -34,21 +34,22 @@
   programs.sway = {
     enable = true;
     extraPackages = with pkgs; [
-      swaylock
-      swayidle
-      waybar
-      bemenu
-      xwayland
       alacritty
+      bemenu
+      brightnessctl
       gammastep
-      mako
-      wl-clipboard
       grim
-      slurp
-      imv
       handlr
+      imv
+      mako
       playerctl
+      slurp
+      swayidle
+      swaylock
+      waybar
+      wl-clipboard
       xdg-desktop-portal-wlr
+      xwayland
     ];
     extraSessionCommands = ''
         export SDL_VIDEODRIVER=wayland
