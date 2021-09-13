@@ -4,6 +4,7 @@
   wayland.windowManager.sway =
     let
       sysmenu = "system:  [l]ogout  [p]oweroff  [r]eboot [s]uspend";
+      swaylockCommand = "swaylock -F -e -l -c 212121 --indicator-idle-visible";
     in
     {
       enable = true;
@@ -11,7 +12,14 @@
         modifier = "Mod4";
         menu = "${pkgs.bemenu}/bin/bemenu-run -l 10 -i -p '>' -m -1 -n --fn 'Overpass Mono 11'";
         startup = [
-          { command = "${pkgs.swayidle}/bin/swayidle -w timeout 300 'swaymsg \"output * dpms off\"' resume 'swaymsg \"output * dpms on\"'"; }
+          {
+            command = ''${pkgs.swayidle}/bin/swayidle -w \
+              timeout 120 'swaymsg "output * dpms off"' \
+                resume 'swaymsg "output * dpms on"' \
+              timeout 300 '${swaylockCommand}' \
+              before-sleep '${swaylockCommand}'
+            '';
+          }
           { command = "${pkgs.xfce.thunar}/bin/thunar --daemon"; }
           { command = "${pkgs.mako}/bin/mako"; }
           { command = "systemctl --user import-environment XDG_SESSION_TYPE XDG_CURRENT_DESKTOP"; }
@@ -82,7 +90,7 @@
             {
               "${modifier}+0" = "workspace 10";
               "${modifier}+Delete" = "mode \"${sysmenu}\"";
-              "${modifier}+t" = "exec swaylock -F -e -l -c 212121 --indicator-idle-visible";
+              "${modifier}+t" = "exec ${swaylockCommand}";
               "${modifier}+c" = "exec firefox";
               Print = "exec ${pkgs.grim}/bin/grim -g \"$(${pkgs.slurp}/bin/slurp)\" - | wl-copy";
               XF86MonBrightnessDown = "exec ${pkgs.brightnessctl}/bin/brightnessctl set 10%-";
