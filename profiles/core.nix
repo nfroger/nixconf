@@ -62,45 +62,46 @@
   networking.wireguard.enable = true;
 
   environment.systemPackages = with pkgs; [
-    coreutils-full
-    file
-    tree
-    htop
-    unzip
-    zip
-    p7zip
-    killall
-    manpages
-    cifs-utils
-    ntfs3g
-    ldns
-    wget
-    neovim
-    curl
-    git
-    fzf
-    gnupg
-    yubikey-manager
-    neofetch
-    jq
-    glib
-    zathura
-    irssi
-    vault
-    packer
-    awscli
-    terraform_0_15
     ansible
+    awscli
+    azure-cli
+    cifs-utils
+    coreutils-full
+    curl
+    discord
+    file
+    fzf
+    git
+    glib
+    gnupg
+    htop
+    irssi
+    jq
+    killall
+    krew
     kubectl
     kubectx
     kubernetes-helm
-    azure-cli
-    krew
+    ldns
+    manpages
     minio-client
-    tmux
-    thunderbird
-    discord
+    neofetch
+    neovim
+    ntfs3g
+    p7zip
+    packer
     slack
+    spotify
+    terraform_0_15
+    thunderbird
+    tmux
+    tree
+    unzip
+    vault
+    wget
+    yubikey-manager
+    zathura
+    zip
     (wrapFirefox firefox-unwrapped {
       nixExtensions = [
         (fetchFirefoxAddon {
