@@ -78,8 +78,8 @@
             {
               "${modifier}+0" = "workspace 10";
               "${modifier}+Delete" = "mode \"${sysmenu}\"";
-              "${modifier}+l" = "exec swaylock -F -e -l -c 212121 --indicator-idle-visible";
-              "${modifier}+b" = "exec firefox";
+              "${modifier}+t" = "exec swaylock -F -e -l -c 212121 --indicator-idle-visible";
+              "${modifier}+c" = "exec firefox";
               Print = "exec ${pkgs.grim}/bin/grim -g \"$(${pkgs.slurp}/bin/slurp)\" - | wl-copy";
               XF86MonBrightnessDown = "exec ${pkgs.brightnessctl}/bin/brightnessctl set 10%-";
               XF86MonBrightnessUp = "exec ${pkgs.brightnessctl}/bin/brightnessctl set +10%";
