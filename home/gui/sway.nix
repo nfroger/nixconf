@@ -20,6 +20,10 @@
         ];
         terminal = "${pkgs.alacritty}/bin/alacritty";
         bars = [ ]; # empty because waybar is launched by systemd
+        fonts = {
+          names = [ "Overpass" ];
+          size = 11.0;
+        };
         gaps = {
           inner = 10;
           outer = 5;
