@@ -89,6 +89,7 @@
           lib.mkOptionDefault
             {
               "${modifier}+0" = "workspace 10";
+              "${modifier}+Shift+0" = "move container to workspace number 10";
               "${modifier}+Delete" = "mode \"${sysmenu}\"";
               "${modifier}+t" = "exec ${swaylockCommand}";
               "${modifier}+c" = "exec firefox";
