@@ -14,9 +14,9 @@
         startup = [
           {
             command = ''${pkgs.swayidle}/bin/swayidle -w \
-              timeout 120 'swaymsg "output * dpms off"' \
+              timeout 120 '${swaylockCommand}' \
+              timeout 200 'swaymsg "output * dpms off"' \
                 resume 'swaymsg "output * dpms on"' \
-              timeout 300 '${swaylockCommand}' \
               before-sleep '${swaylockCommand}'
             '';
           }
