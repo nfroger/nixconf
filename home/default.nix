@@ -65,7 +65,14 @@
     shellAliases = {
       cat = "bat";
       ls = "ls -hN --color=auto --group-directories-first";
+      k = "kubectl";
+      kns = "kubens";
+      kcx = "kubectx";
     };
+    initExtra = ''
+      source <(kubectl completion zsh)
+      complete -F __start_kubectl k
+    '';
   };
 
   programs.direnv = {
