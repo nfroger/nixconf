@@ -92,13 +92,16 @@
     ansible
     awscli
     azure-cli
+    chromium
     cifs-utils
+    claws-mail
     coreutils-full
     curl
     discord
     file
     fzf
     git
+    git-crypt
     glib
     gnupg
     htop
