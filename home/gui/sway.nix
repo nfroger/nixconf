@@ -254,4 +254,6 @@
       }
     '';
   };
+
+  services.kanshi.enable = true;
 }
