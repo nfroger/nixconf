@@ -61,6 +61,30 @@
 
   networking.wireguard.enable = true;
 
+  krb5 = {
+    enable = true;
+    libdefaults = {
+      default_realm = "KEKTUS.XYZ";
+      dns_fallback = true;
+      dns_canonicalize_hostname = false;
+      rnds = false;
+      forwardable = true;
+    };
+
+    realms = {
+      "CRI.EPITA.FR" = {
+        admin_server = "kerberos.pie.cri.epita.fr";
+      };
+      "UNDERCLOUD.CRI.EPITA.FR" = {
+        admin_server = "kerberos.undercloud.cri.epita.fr";
+      };
+      "KEKTUS.XYZ" = {
+        admin_server = "kerberos.kektus.xyz";
+        kdc = "kerberos.kektus.xyz";
+      };
+    };
+  };
+
   environment.systemPackages = with pkgs; [
     ansible
     awscli
