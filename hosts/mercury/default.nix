@@ -4,6 +4,7 @@
   imports = [
     ../../profiles/core.nix
     ../../profiles/desktop.nix
+    ../../profiles/docker.nix
   ];
 
   networking.hostName = "mercury";
@@ -81,8 +82,6 @@
         "/dev/rtc","/dev/hpet", "/dev/sev"
     ]
   '';
-
-  virtualisation.docker.enable = true;
 
   system.stateVersion = "20.09";
 }

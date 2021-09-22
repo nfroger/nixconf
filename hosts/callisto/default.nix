@@ -6,6 +6,7 @@
   imports = [
     ../../profiles/core.nix
     ../../profiles/desktop.nix
+    ../../profiles/docker.nix
   ];
 
   networking.hostName = "callisto";
@@ -86,8 +87,6 @@
         "/dev/rtc","/dev/hpet", "/dev/sev"
     ]
   '';
-
-  virtualisation.docker.enable = true;
 
   services.openafsClient = {
     enable = true;
