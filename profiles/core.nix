@@ -6,6 +6,8 @@
     ./gui.nix
   ];
 
+  boot.tmpOnTmpfs = true;
+
   users.users.nicolas = {
     isNormalUser = true;
     extraGroups = [ "wheel" "libvirtd" "input" "kvm" "docker" "video" ];
