@@ -83,15 +83,15 @@
   programs.neovim = {
     enable = true;
     vimAlias = true;
-    #coc = {
-    #  enable = true;
-    #};
+    coc = {
+      enable = true;
+    };
     plugins = with pkgs.vimPlugins; [
       emmet-vim
       {
         plugin = vimtex;
         config = ''
-              let g:latex_view_general_viewer = "zathura"
+          let g:latex_view_general_viewer = "zathura"
           let g:vimtex_view_method = "zathura"
           let g:tex_flavor = "latex"
         '';
@@ -99,8 +99,6 @@
       {
         plugin = onedark-vim;
         config = ''
-          packadd! onedark-vim
-
           let g:onedark_color_overrides = {
                       \ "black": {"gui": "#1c1c1c", "cterm": "235", "cterm16": "0" }
           \}
