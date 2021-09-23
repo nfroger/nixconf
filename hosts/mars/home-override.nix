@@ -39,5 +39,17 @@
         }
       ];
     };
+    dockedOffice = {
+      outputs = [
+        {
+          criteria = "eDP-1";
+          status = "disable";
+        }
+        {
+          criteria = "Lenovo Group Limited LEN P27q-10";
+          scale = 1.25;
+        }
+      ];
+    };
   };
 }
