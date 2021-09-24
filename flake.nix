@@ -21,7 +21,7 @@
           config = {
             allowUnfree = true;
           };
-          overlays = [ ] ++ (optional withOverrides self.overrides.${system});
+          overlays = (attrValues self.overlays) ++ (optional withOverrides self.overrides.${system});
         };
 
       pkgset = system: {
@@ -30,6 +30,10 @@
       };
 
       anySystemOutputs = {
+        lib = import ./lib { inherit lib; };
+
+        overlays = (import ./overlays);
+
         nixosConfigurations =
           let
             nixosSystem = hostName:
@@ -82,6 +86,8 @@
           };
 
           overrides = import ./overlays/overrides.nix { inherit pkgsMaster; };
+
+          packages = self.lib.overlaysToPkgs self.overlays pkgs;
         });
 
     in

@@ -1,0 +1,3 @@
+{
+  nixUnstable = import ./nixUnstable.nix;
+}
