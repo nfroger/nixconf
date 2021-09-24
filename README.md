@@ -23,3 +23,15 @@ A test virtual machine can be built to test the configuration. Simply run
 # Updating
 
 To update a running system, use ``nixos-rebuild --flake .#${hostname}``.
+
+# Credit
+
+Parts of this project have been copied from the project "Nix PIE" maintained by
+the CRI of EPITA. You can find the source of this project on their [Gitlab
+instance](https://gitlab.cri.epita.fr/cri/infrastructure/nixpie).
+
+The following files were partially or fully copied :
+* flake.nix
+* lib/make-squashfs.nix
+* lib/overlays-to-pkgs.nix
+* modules/system/boot/netboot.nix
