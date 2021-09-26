@@ -128,6 +128,7 @@
     tree
     unzip
     vault
+    virt-manager
     wget
     yubikey-manager
     zathura
