@@ -113,6 +113,7 @@
     kubectx
     kubernetes-helm
     ldns
+    lm_sensors
     manpages
     minio-client
     neofetch
