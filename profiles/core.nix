@@ -130,6 +130,7 @@
     unzip
     vault
     virt-manager
+    vscodium
     wget
     yubikey-manager
     zathura
