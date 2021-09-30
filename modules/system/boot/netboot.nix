@@ -118,6 +118,7 @@ with lib;
           "xennet"
           "e1000e"
           "r8152"
+          "alx"
         ];
         kernelModules = [
           "loop"
