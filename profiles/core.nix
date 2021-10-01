@@ -44,7 +44,6 @@
   services.pcscd.enable = true; # Smartcard support
   services.printing.enable = true;
   services.printing.drivers = [ pkgs.brlaser ];
-  services.resolved.enable = true;
 
   programs.neovim.vimAlias = true;
 

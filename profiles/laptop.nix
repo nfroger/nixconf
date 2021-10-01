@@ -1,7 +1,7 @@
 {
   networking.networkmanager = {
     enable = true;
-    dns = "systemd-resolved";
+    dns = "default";
   };
 
   programs.nm-applet.enable = true;
