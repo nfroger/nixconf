@@ -1,6 +1,12 @@
 { pkgs, config, lib, ... }:
 
 {
+  programs.zsh.loginExtra = ''
+    if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
+      exec sway
+    fi
+  '';
+
   wayland.windowManager.sway =
     let
       sysmenu = "system:  [l]ogout  [p]oweroff  [r]eboot [s]uspend";
