@@ -1,3 +1,5 @@
+{ nixos-hardware, ... }:
+
 {
   # Main desktop
 
@@ -5,6 +7,10 @@
     ../../profiles/core.nix
     ../../profiles/desktop.nix
     ../../profiles/docker.nix
+
+    nixos-hardware.nixosModules.common-cpu-intel
+    nixos-hardware.nixosModules.common-pc
+    nixos-hardware.nixosModules.common-pc-ssd
   ];
 
   networking.hostName = "mercury";
