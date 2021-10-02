@@ -55,6 +55,10 @@
   };
 
   home.packages = with pkgs; [ capitaine-cursors ];
+  xsession.pointerCursor = {
+    package = pkgs.capitaine-cursors;
+    name = "capitaine-cursors";
+  };
 
   services.gammastep = {
     enable = true;
