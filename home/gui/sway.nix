@@ -72,7 +72,7 @@
             }
           ];
         };
-        modes = {
+        modes = lib.mkOptionDefault {
           "${sysmenu}" = {
             l = "exit";
             p = "exec poweroff";
