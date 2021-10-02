@@ -83,11 +83,61 @@
   programs.neovim = {
     enable = true;
     vimAlias = true;
+    withNodeJs = true; # required by coc
     coc = {
       enable = true;
+      settings = {
+        "rust-analyzer.serverPath" = "rust-analyzer";
+        languageserver = {
+          nix = {
+            command = "rnix-lsp";
+            filetypes = [ "nix" ];
+          };
+        };
+      };
     };
+    extraPackages = with pkgs; [
+      # Coc Nix
+      nixfmt
+      rnix-lsp
+
+      # Coc Rust
+      rust-analyzer
+    ];
     plugins = with pkgs.vimPlugins; [
+      coc-clangd
+      coc-json
+      coc-pyright
+      coc-rust-analyzer
+      coc-yaml
+
       emmet-vim
+      vim-polyglot
+      {
+        plugin = coc-nvim;
+        config = ''
+          " Use tab for trigger completion with characters ahead and navigate.
+          " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+          " other plugin before putting this into your config.
+          inoremap <silent><expr> <TAB>
+                \ pumvisible() ? "\<C-n>" :
+                \ <SID>check_back_space() ? "\<TAB>" :
+                \ coc#refresh()
+          inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+          function! s:check_back_space() abort
+            let col = col('.') - 1
+            return !col || getline('.')[col - 1]  =~# '\s'
+          endfunction
+
+          " use <c-space> for trigger completion.
+          inoremap <silent><expr> <c-space> coc#refresh()
+          " Make <CR> auto-select the first completion item and notify coc.nvim to
+          " format on enter, <cr> could be remapped by other vim plugin
+          inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                                        \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+        '';
+      }
       {
         plugin = vimtex;
         config = ''
@@ -125,7 +175,6 @@
           endif
         '';
       }
-      vim-polyglot
     ];
     extraConfig = ''
       set nocompatible
