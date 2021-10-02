@@ -30,6 +30,13 @@
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
+    autoOptimiseStore = true;
+    gc = {
+      automatic = true;
+      dates = "daily";
+      options = "--delete-older-than 10d";
+    };
+    optimise.automatic = true;
   };
 
   # Use the systemd-boot EFI boot loader.
