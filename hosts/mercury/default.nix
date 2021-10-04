@@ -24,7 +24,7 @@
   };
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "ehci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" "sr_mod" ];
-  boot.initrd.kernelModules = [ "dm-snapshot" "dm-mod" "dm-crypt" ];
+  boot.initrd.kernelModules = [ "dm-snapshot" "dm-mod" "dm-crypt" "dm-thin-pool" ];
   boot.kernelModules = [ "kvm-intel" "vfio_pci" "vfio" "vfio_iommu_type1" "vfio_virqfd" ];
   boot.extraModulePackages = [ ];
   boot.kernelParams = [ "intel_iommu=on" "iommu=pt" "vfio-pci.ids=10de:13c2,10de:0fbb" ];
