@@ -46,7 +46,7 @@
           status = "disable";
         }
         {
-          criteria = "Lenovo Group Limited LEN P27q-10";
+          criteria = "Lenovo Group Limited LEN";
           scale = 1.25;
         }
       ];
