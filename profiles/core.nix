@@ -50,7 +50,6 @@
   services.openssh.enable = true;
   services.pcscd.enable = true; # Smartcard support
   services.printing.enable = true;
-  services.printing.drivers = [ pkgs.brlaser ];
 
   virtualisation.libvirtd.enable = true;
   virtualisation.libvirtd.qemuOvmf = true;
