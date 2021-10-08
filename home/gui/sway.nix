@@ -1,5 +1,11 @@
 { pkgs, config, lib, ... }:
 
+let
+  issBackground = builtins.fetchurl {
+    url = https://static.k8s.kektus.xyz/uploads/iss063e034054.jpg;
+    sha256 = "0fd43jgl4b2j8dyv800fvqzfijjsr48khapw11s75vc19glwrkab";
+  };
+in
 {
   programs.zsh.loginExtra = ''
     if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
@@ -10,7 +16,7 @@
   wayland.windowManager.sway =
     let
       sysmenu = "system:  [l]ogout  [p]oweroff  [r]eboot [s]uspend";
-      swaylockCommand = "swaylock -F -e -l -c 212121 --indicator-idle-visible";
+      swaylockCommand = "swaylock -F -e -l -i ${issBackground} --indicator-idle-visible";
     in
     {
       enable = true;
@@ -54,10 +60,7 @@
         };
         output = {
           "*" = {
-            bg = (builtins.fetchurl {
-              url = https://static.k8s.kektus.xyz/uploads/iss063e034054.jpg;
-              sha256 = "0fd43jgl4b2j8dyv800fvqzfijjsr48khapw11s75vc19glwrkab";
-            }) + " fill";
+            bg = issBackground + " fill";
           };
         };
         window = {
