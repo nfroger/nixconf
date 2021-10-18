@@ -25,6 +25,9 @@
       signByDefault = true;
       key = "00BD4B2A4EBA035CC102E0B5B7D7C14018816976";
     };
+    extraConfig = {
+      pager.branch = false;
+    };
     includes = [
       {
         condition = "gitdir:~/Documents/cri/";
