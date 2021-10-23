@@ -73,7 +73,7 @@
     [{ device = "/dev/disk/by-uuid/ea313758-ab4b-45c6-bb88-1a87d7e6b4dc"; }];
 
   virtualisation.libvirtd.allowedBridges = [ "br0" ];
-  virtualisation.libvirtd.qemuVerbatimConfig = ''
+  virtualisation.libvirtd.qemu.verbatimConfig = ''
     user = "nicolas"
     group = "kvm"
     cgroup_device_acl = [

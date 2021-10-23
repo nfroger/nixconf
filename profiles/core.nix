@@ -50,7 +50,7 @@
   services.printing.enable = true;
 
   virtualisation.libvirtd.enable = true;
-  virtualisation.libvirtd.qemuOvmf = true;
+  virtualisation.libvirtd.qemu.ovmf.enable = true;
 
   programs.neovim.vimAlias = true;
 
