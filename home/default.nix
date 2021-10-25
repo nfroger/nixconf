@@ -113,6 +113,7 @@
       coc-pyright
       coc-rust-analyzer
       coc-yaml
+      fzf-vim
 
       emmet-vim
       vim-polyglot
