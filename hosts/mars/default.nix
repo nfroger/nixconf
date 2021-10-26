@@ -5,6 +5,7 @@
 
   imports = [
     ../../profiles/core.nix
+    ../../profiles/hamradio.nix
     ../../profiles/laptop.nix
     ../../profiles/docker.nix
     nixos-hardware.nixosModules.common-pc-laptop
