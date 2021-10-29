@@ -41,6 +41,11 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  boot.extraModulePackages = with pkgs; [
+    linuxPackages.v4l2loopback
+  ];
+  boot.kernelModules = [ "v4l2loopback" ];
+
   # Services
   services.avahi.enable = true;
   services.avahi.nssmdns = true;
