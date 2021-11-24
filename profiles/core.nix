@@ -35,6 +35,13 @@
       options = "--delete-older-than 10d";
     };
     optimise.automatic = true;
+
+    binaryCaches = [
+      "https://cache.nix.cri.epita.fr/"
+    ];
+    binaryCachePublicKeys = [
+      "cache.nix.cri.epita.fr:qDIfJpZWGBWaGXKO3wZL1zmC+DikhMwFRO4RVE6VVeo="
+    ];
   };
 
   # Use the systemd-boot EFI boot loader.
