@@ -259,4 +259,40 @@
       };
     };
   };
+
+  programs.ssh = {
+    enable = true;
+    forwardAgent = false;
+    controlMaster = "yes";
+    controlPersist = "yes";
+    matchBlocks = {
+      "fw-cri" = {
+        hostname = "fw-1.gate.cri.epita.fr";
+        user = "root";
+      };
+      "*.cri.epita.fr" = {
+        proxyJump = "fw-cri";
+        user = "root";
+      };
+      "os-bastion" = {
+        hostname = "bastion.iaas.cri.epita.fr";
+        user = "root";
+      };
+      "*.cri.openstack.epita.fr" = {
+        proxyJump = "os-bastion";
+        user = "root";
+      };
+      "git.cri.epita.fr" = {
+        extraOptions = {
+          GSSAPIAuthentication = "yes";
+        };
+      };
+      "ssh.cri.epita.fr" = {
+        extraOptions = {
+          GSSAPIAuthentication = "yes";
+          GSSAPIDelegateCredentials = "yes";
+        };
+      };
+    };
+  };
 }
