@@ -270,10 +270,6 @@
         hostname = "fw-1.gate.cri.epita.fr";
         user = "root";
       };
-      "*.cri.epita.fr" = {
-        proxyJump = "fw-cri";
-        user = "root";
-      };
       "os-bastion" = {
         hostname = "bastion.iaas.cri.epita.fr";
         user = "root";
