@@ -28,6 +28,7 @@
     extraConfig = {
       format.signOff = true;
       pager.branch = false;
+      pull.rebase = true;
     };
     includes = [
       {
