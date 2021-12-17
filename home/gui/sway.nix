@@ -5,6 +5,8 @@ let
     url = https://static.k8s.kektus.xyz/uploads/iss063e034054.jpg;
     sha256 = "0fd43jgl4b2j8dyv800fvqzfijjsr48khapw11s75vc19glwrkab";
   };
+
+  swaylockCommand = "swaylock -F -e -l -i ${issBackground} --indicator-idle-visible";
 in
 {
   programs.zsh.loginExtra = ''
@@ -16,7 +18,6 @@ in
   wayland.windowManager.sway =
     let
       sysmenu = "system:  [l]ogout  [p]oweroff  [r]eboot [s]uspend";
-      swaylockCommand = "swaylock -F -e -l -i ${issBackground} --indicator-idle-visible";
     in
     {
       enable = true;
@@ -24,14 +25,6 @@ in
         modifier = "Mod4";
         menu = "${pkgs.bemenu}/bin/bemenu-run -l 10 -i -p '>' -m -1 -n --fn 'Overpass Mono 11'";
         startup = [
-          {
-            command = ''${pkgs.swayidle}/bin/swayidle \
-              timeout 120 '${swaylockCommand}' \
-              timeout 200 'swaymsg "output * dpms off"' \
-                resume 'swaymsg "output * dpms on"' \
-              before-sleep '${swaylockCommand}'
-            '';
-          }
           { command = "${pkgs.xfce.thunar}/bin/thunar --daemon"; }
           { command = "${pkgs.mako}/bin/mako"; }
           { command = "systemctl --user import-environment XDG_SESSION_TYPE XDG_CURRENT_DESKTOP"; }
@@ -115,6 +108,26 @@ in
             };
       };
     };
+
+  systemd.user.services.swayidle = {
+    Unit = {
+      Description = "Swayidle as systemd service";
+      Documentation = "man:swayidle(1)";
+      Requires = [ "sway-session.target" ];
+      PartOf = "sway-session.target";
+    };
+
+    Service = {
+      ExecStart = ''${pkgs.swayidle}/bin/swayidle \
+        timeout 120 '${swaylockCommand}' \
+        timeout 200 'swaymsg "output * dpms off"' \
+          resume 'swaymsg "output * dpms on"' \
+        before-sleep '${swaylockCommand}'
+      '';
+    };
+
+    Install = { WantedBy = [ "sway-session.target" ]; };
+  };
 
   programs.waybar = {
     enable = true;
