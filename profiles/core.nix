@@ -136,6 +136,7 @@
     lm_sensors
     manpages
     minio-client
+    mpv
     neofetch
     neovim
     ntfs3g
