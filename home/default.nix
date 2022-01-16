@@ -271,12 +271,28 @@
         hostname = "fw-1.gate.cri.epita.fr";
         user = "root";
       };
+      "*.cri.epita.fr" = {
+        proxyJump = "fw-cri";
+        user = "root";
+      };
       "os-bastion" = {
         hostname = "bastion.iaas.cri.epita.fr";
         user = "root";
       };
       "*.cri.openstack.epita.fr" = {
         proxyJump = "os-bastion";
+        user = "root";
+      };
+      "*.3ie.fr" = {
+        proxyJump = "fw-cri";
+        user = "root";
+      };
+      "acu-bastion" = {
+        hostname = "bastion.iaas.assistants.epita.fr";
+        user = "root";
+      };
+      "*.assistants.openstack.epita.fr" = {
+        proxyJump = "acu-bastion";
         user = "root";
       };
       "git.cri.epita.fr" = {
