@@ -37,7 +37,7 @@
     optimise.automatic = true;
 
     binaryCaches = [
-      "https://cache.nix.cri.epita.fr/"
+      "https://s3.cri.epita.fr/cri-nix-cache.s3.cri.epita.fr"
     ];
     binaryCachePublicKeys = [
       "cache.nix.cri.epita.fr:qDIfJpZWGBWaGXKO3wZL1zmC+DikhMwFRO4RVE6VVeo="
