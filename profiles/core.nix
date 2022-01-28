@@ -111,7 +111,6 @@
   environment.systemPackages = with pkgs; [
     ansible
     awscli
-    azure-cli
     chromium
     cifs-utils
     claws-mail
@@ -121,7 +120,6 @@
     file
     fzf
     git
-    git-crypt
     glib
     gnupg
     htop
