@@ -19,13 +19,14 @@
     };
   };
 
+  # commented stuff is for pci passtrough vm, disabled because too many monitors
   boot.initrd.availableKernelModules = [ "xhci_pci" "ehci_pci" "ata_piix" "ahci" "usbhid" "usb_storage" "sd_mod" "sr_mod" ];
   boot.initrd.kernelModules = [ "dm-snapshot" "dm-mod" "dm-cache" "dm-cache-smq" "dm-thin-pool" "dm-raid" "raid1" "dm-crypt" ];
-  boot.kernelModules = [ "kvm-intel" "vfio_pci" "vfio" "vfio_iommu_type1" "vfio_virqfd" ];
+  boot.kernelModules = [ "kvm-intel" /*"vfio_pci" "vfio" "vfio_iommu_type1" "vfio_virqfd"*/ ];
   boot.extraModulePackages = [ ];
-  boot.kernelParams = [ "intel_iommu=on" "iommu=pt" "vfio-pci.ids=10de:1c81,10de:0fb9" ];
+  boot.kernelParams = [ "intel_iommu=on" "iommu=pt" /*"vfio-pci.ids=10de:1c81,10de:0fb9"*/ ];
+  #options vfio-pci ids=10de:1c81,10de:0fb9
   boot.extraModprobeConfig = ''
-    options vfio-pci ids=10de:1c81,10de:0fb9
     options kvm_intel nested=1
   '';
   boot.kernel.sysctl = {
