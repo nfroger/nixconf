@@ -9,13 +9,33 @@
     ../../profiles/docker.nix
   ];
 
-  networking.hostName = "callisto";
+  networking = {
+    hostName = "callisto";
 
-  networking.interfaces.eno1.useDHCP = false;
-  networking.interfaces.br0.useDHCP = true;
-  networking.bridges = {
-    br0 = {
-      interfaces = [ "eno1" ];
+    bonds = {
+      bond0 = {
+        interfaces = [ "eno1" "enp3s0" ];
+        driverOptions = {
+          mode = "802.3ad";
+          lacp_rate = "fast";
+          xmit_hash_policy = "layer3+4";
+        };
+      };
+    };
+
+    bridges = {
+      br0 = {
+        interfaces = [ "bond0" ];
+      };
+    };
+
+    interfaces = {
+      eno1 = { };
+      enp3s0 = { };
+      bond0 = { };
+      br0 = {
+        useDHCP = true;
+      };
     };
   };
 
