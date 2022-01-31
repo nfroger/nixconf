@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, nixos-hardware, ... }:
 
 {
   # Desktop at CRI
@@ -7,6 +7,10 @@
     ../../profiles/core.nix
     ../../profiles/desktop.nix
     ../../profiles/docker.nix
+
+    nixos-hardware.nixosModules.common-cpu-intel
+    nixos-hardware.nixosModules.common-pc
+    nixos-hardware.nixosModules.common-pc-ssd
   ];
 
   networking = {
