@@ -16,11 +16,11 @@ in
       };
       VGA-1 = {
         position = "3840 0";
-        transform = "90";
+        transform = "270";
       };
     };
-    workspaceOutputAssign = genWorkspaceAssign "DP-2" (builtins.genList (x: x + 1) 5)
-      ++ genWorkspaceAssign "DP-1" (builtins.genList (x: x + 6) 5) ++
+    workspaceOutputAssign = genWorkspaceAssign "DP-1" (builtins.genList (x: x + 1) 5)
+      ++ genWorkspaceAssign "DP-2" (builtins.genList (x: x + 6) 5) ++
       [{
         output = "VGA-1";
         workspace = "11";
