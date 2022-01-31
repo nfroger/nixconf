@@ -271,6 +271,11 @@
         hostname = "fw-1.gate.cri.epita.fr";
         user = "root";
       };
+      "callisto" = {
+        hostname = "fw-1.gate.cri.epita.fr";
+        port = 22426;
+        user = "nicolas";
+      };
       "*.cri.epita.fr" = {
         proxyJump = "fw-cri";
         user = "root";
