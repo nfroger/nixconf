@@ -8,15 +8,15 @@ in
 {
   wayland.windowManager.sway.config = {
     output = {
+      VGA-1 = {
+        position = "0 0";
+        transform = "270";
+      };
       DP-1 = {
-        position = "0 440";
+        position = "1080 420";
       };
       DP-2 = {
-        position = "1920 440";
-      };
-      VGA-1 = {
-        position = "3840 0";
-        transform = "270";
+        position = "3000 420";
       };
     };
     workspaceOutputAssign = genWorkspaceAssign "DP-1" (builtins.genList (x: x + 1) 5)
