@@ -268,11 +268,11 @@
     controlPersist = "yes";
     matchBlocks = {
       "fw-cri" = {
-        hostname = "fw-1.gate.cri.epita.fr";
+        hostname = "gate.cri.epita.fr";
         user = "root";
       };
       "callisto" = {
-        hostname = "fw-1.gate.cri.epita.fr";
+        hostname = "gate.cri.epita.fr";
         port = 22426;
         user = "nicolas";
       };
