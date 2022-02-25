@@ -283,6 +283,7 @@
       "os-bastion" = {
         hostname = "bastion.iaas.cri.epita.fr";
         user = "root";
+        port = 2222;
       };
       "*.cri.openstack.epita.fr" = {
         proxyJump = "os-bastion";
