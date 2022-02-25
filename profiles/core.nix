@@ -91,7 +91,6 @@
       dns_fallback = true;
       dns_canonicalize_hostname = false;
       rnds = false;
-      forwardable = true;
     };
 
     realms = {
