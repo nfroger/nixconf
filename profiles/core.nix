@@ -30,18 +30,19 @@
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
-    autoOptimiseStore = true;
     gc = {
       options = "--delete-older-than 10d";
     };
     optimise.automatic = true;
-
-    binaryCaches = [
-      "https://s3.cri.epita.fr/cri-nix-cache.s3.cri.epita.fr"
-    ];
-    binaryCachePublicKeys = [
-      "cache.nix.cri.epita.fr:qDIfJpZWGBWaGXKO3wZL1zmC+DikhMwFRO4RVE6VVeo="
-    ];
+    settings = {
+      auto-optimise-store = true;
+      substituters = [
+        "https://s3.cri.epita.fr/cri-nix-cache.s3.cri.epita.fr"
+      ];
+      trusted-public-keys = [
+        "cache.nix.cri.epita.fr:qDIfJpZWGBWaGXKO3wZL1zmC+DikhMwFRO4RVE6VVeo="
+      ];
+    };
   };
 
   # Use the systemd-boot EFI boot loader.

@@ -9,9 +9,12 @@
     enable = true;
     settings = {
       env.TERM = "xterm-256color";
-      window.padding = {
-        x = 20;
-        y = 20;
+      window = {
+        padding = {
+          x = 20;
+          y = 20;
+        };
+        opacity = 0.95;
       };
       font = {
         normal = {
@@ -21,7 +24,6 @@
         size = 12;
         offset.x = -1;
       };
-      background_opacity = 0.95;
     };
   };
 
