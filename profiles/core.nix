@@ -143,7 +143,7 @@
     slack
     spotify
     stern
-    terraform_0_15
+    terraform
     thunderbird
     tmux
     tree
