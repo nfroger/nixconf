@@ -267,6 +267,11 @@
     controlMaster = "yes";
     controlPersist = "yes";
     matchBlocks = {
+      "*.kektus.xyz" = {
+        user = "root";
+      };
+
+      # CRI
       "fw-cri" = {
         hostname = "gate.cri.epita.fr";
         user = "root";
