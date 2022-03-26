@@ -3,6 +3,7 @@
 {
   imports = [
     ./gui
+    ./slrn.nix
   ];
 
   home.sessionVariables = {
