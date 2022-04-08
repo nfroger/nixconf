@@ -33,7 +33,6 @@ instance](https://gitlab.cri.epita.fr/cri/infrastructure/nixpie).
 The following files were partially or fully copied :
 * flake.nix
 * lib/make-squashfs.nix
-* lib/overlays-to-pkgs.nix
 * modules/system/boot/netboot.nix
 * pkgs/default.nix
 * pkgs/overlays.nix
