@@ -35,7 +35,7 @@
       anySystemOutputs = {
         lib = import ./lib { inherit lib; };
 
-        overlays = (import ./overlays);
+        overlays = import ./pkgs/overlays.nix { inherit lib; };
 
         nixosConfigurations =
           let
@@ -88,9 +88,9 @@
             ];
           };
 
-          overrides = import ./overlays/overrides.nix { inherit pkgsMaster; };
+          overrides = import ./pkgs/overrides.nix { inherit pkgsMaster; };
 
-          packages = self.lib.overlaysToPkgs self.overlays pkgs;
+          packages = (import ./pkgs { inherit lib pkgs; });
         });
 
     in
