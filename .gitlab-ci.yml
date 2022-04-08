@@ -21,7 +21,7 @@ fmt:
   stage: qa
   needs: []
   script:
-    - nix profile install 'nixpkgs#nixpkgs-fmt' 'nixpkgs#findutils'
+    - nix profile install --inputs-from . 'nixpkgs#nixpkgs-fmt' 'nixpkgs#findutils'
     - nixpkgs-fmt --check $(find -name \*.nix)
   after_script:
     - nixpkgs-fmt $(find -name \*.nix)
