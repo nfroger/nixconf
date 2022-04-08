@@ -1,5 +1,8 @@
 { nixos-hardware, ... }:
 
+let
+  sshkeys = import ../../vars/ssh_keys.nix;
+in
 {
   # Main desktop
 
@@ -23,8 +26,15 @@
     };
   };
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ehci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" "sr_mod" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "ehci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" "sr_mod" "alx" ];
   boot.initrd.kernelModules = [ "dm-snapshot" "dm-mod" "dm-crypt" "dm-thin-pool" ];
+  boot.initrd.network.enable = true;
+  boot.initrd.network.ssh = {
+    enable = true;
+    port = 22;
+    authorizedKeys = [ sshkeys.nicolas ];
+    hostKeys = [ "/etc/ssh/ssh_host_rsa_key" "/etc/ssh/ssh_host_ed25519_key" ];
+  };
   boot.kernelModules = [ "kvm-intel" "vfio_pci" "vfio" "vfio_iommu_type1" "vfio_virqfd" ];
   boot.extraModulePackages = [ ];
   boot.kernelParams = [ "intel_iommu=on" "iommu=pt" "vfio-pci.ids=10de:13c2,10de:0fbb" ];
