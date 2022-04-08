@@ -2,7 +2,8 @@
   description = "My personal NixOS configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-21.11";
+    nixpkgsUnstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgsMaster.url = "github:NixOS/nixpkgs/master";
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -12,7 +13,7 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
-  outputs = { self, nixpkgs, nixpkgsMaster, home-manager, flake-utils, nixos-hardware }:
+  outputs = { self, nixpkgs, nixpkgsUnstable, nixpkgsMaster, home-manager, flake-utils, nixos-hardware }:
     let
       inherit (nixpkgs) lib;
       inherit (lib) attrValues optional;
@@ -29,6 +30,7 @@
 
       pkgset = system: {
         pkgs = pkgImport nixpkgs system true;
+        pkgsUnstable = pkgImport nixpkgsUnstable system false;
         pkgsMaster = pkgImport nixpkgsMaster system false;
       };
 
@@ -77,7 +79,7 @@
 
       multiSystemOutputs = eachDefaultSystem (system:
         let
-          inherit (pkgset system) pkgs pkgsMaster;
+          inherit (pkgset system) pkgs pkgsUnstable pkgsMaster;
         in
         {
           devShell = pkgs.mkShell {
@@ -88,7 +90,7 @@
             ];
           };
 
-          overrides = import ./pkgs/overrides.nix { inherit pkgsMaster; };
+          overrides = import ./pkgs/overrides.nix { inherit pkgsUnstable pkgsMaster; };
 
           packages = (import ./pkgs { inherit lib pkgs; });
         });

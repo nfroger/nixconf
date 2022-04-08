@@ -1,3 +1,3 @@
-{ pkgsMaster }:
+{ pkgsUnstable, pkgsMaster }:
 
 final: prev: { }
