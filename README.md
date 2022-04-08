@@ -35,3 +35,6 @@ The following files were partially or fully copied :
 * lib/make-squashfs.nix
 * lib/overlays-to-pkgs.nix
 * modules/system/boot/netboot.nix
+* pkgs/default.nix
+* pkgs/overlays.nix
+* pkgs/overrides.nix
