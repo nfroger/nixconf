@@ -74,6 +74,7 @@
       k = "kubectl";
       kns = "kubens";
       kcx = "kubectx";
+      os = "openstack";
     };
     initExtra = ''
       source <(kubectl completion zsh)
