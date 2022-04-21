@@ -16,6 +16,9 @@
   networking = {
     hostName = "callisto";
 
+    domain = "lab.cri.epita.fr";
+    nameservers = [ "91.243.117.210" ];
+
     bonds = {
       bond0 = {
         interfaces = [ "eno1" "enp3s0" ];
@@ -33,12 +36,24 @@
       };
     };
 
+    defaultGateway = {
+      address = "192.168.240.254";
+      interface = "br0";
+    };
+
     interfaces = {
       eno1 = { };
       enp3s0 = { };
       bond0 = { };
       br0 = {
-        useDHCP = true;
+        ipv4 = {
+          addresses = [
+            {
+              address = "192.168.240.26";
+              prefixLength = 24;
+            }
+          ];
+        };
       };
     };
   };
