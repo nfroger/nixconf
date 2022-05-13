@@ -31,6 +31,7 @@
       pager.branch = false;
       pull.rebase = true;
     };
+    ignores = [ ".direnv" ];
     includes = [
       {
         condition = "gitdir:~/Documents/cri/";
@@ -85,6 +86,10 @@
   programs.direnv = {
     enable = true;
     enableZshIntegration = true;
+    nix-direnv = {
+      enable = true;
+      enableFlakes = true;
+    };
   };
 
   programs.neovim = {
