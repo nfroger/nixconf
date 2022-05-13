@@ -5,6 +5,7 @@
 
   imports = [
     ../../profiles/core.nix
+    ../../profiles/sshfs.nix
   ];
 
   netboot.enable = true;
