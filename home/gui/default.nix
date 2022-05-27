@@ -9,9 +9,12 @@
     enable = true;
     settings = {
       env.TERM = "xterm-256color";
-      window.padding = {
-        x = 20;
-        y = 20;
+      window = {
+        opacity = 0.95;
+        padding = {
+          x = 20;
+          y = 20;
+        };
       };
       font = {
         normal = {
@@ -21,7 +24,6 @@
         size = 12;
         offset.x = -1;
       };
-      background_opacity = 0.95;
     };
   };
 
@@ -54,10 +56,14 @@
     };
   };
 
-  home.packages = with pkgs; [ capitaine-cursors ];
-  xsession.pointerCursor = {
-    package = pkgs.capitaine-cursors;
-    name = "capitaine-cursors";
+  home = {
+    packages = with pkgs; [ capitaine-cursors ];
+    pointerCursor = {
+      package = pkgs.capitaine-cursors;
+      name = "capitaine-cursors";
+      x11.enable = true;
+      gtk.enable = true;
+    };
   };
 
   services.gammastep = {
