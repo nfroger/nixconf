@@ -16,6 +16,19 @@
           };
         };
       };
+      # TODO: remove the following
+      # Related issue: https://github.com/nix-community/home-manager/issues/2966
+      package = pkgs.vimUtils.buildVimPluginFrom2Nix {
+        pname = "coc.nvim";
+        version = "2022-05-21";
+        src = pkgs.fetchFromGitHub {
+          owner = "neoclide";
+          repo = "coc.nvim";
+          rev = "791c9f673b882768486450e73d8bda10e391401d";
+          sha256 = "sha256-MobgwhFQ1Ld7pFknsurSFAsN5v+vGbEFojTAYD/kI9c=";
+        };
+        meta.homepage = "https://github.com/neoclide/coc.nvim/";
+      };
     };
     extraPackages = with pkgs; [
       # Coc Nix
@@ -41,31 +54,6 @@
           let g:latex_view_general_viewer = "zathura"
           let g:vimtex_view_method = "zathura"
           let g:tex_flavor = "latex"
-        '';
-      }
-      {
-        plugin = coc-nvim;
-        config = ''
-          " Use tab for trigger completion with characters ahead and navigate.
-          " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-          " other plugin before putting this into your config.
-          inoremap <silent><expr> <TAB>
-                \ pumvisible() ? "\<C-n>" :
-                \ <SID>check_back_space() ? "\<TAB>" :
-                \ coc#refresh()
-          inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-          function! s:check_back_space() abort
-            let col = col('.') - 1
-            return !col || getline('.')[col - 1]  =~# '\s'
-          endfunction
-
-          " use <c-space> for trigger completion.
-          inoremap <silent><expr> <c-space> coc#refresh()
-          " Make <CR> auto-select the first completion item and notify coc.nvim to
-          " format on enter, <cr> could be remapped by other vim plugin
-          inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-                                        \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
         '';
       }
       {
@@ -152,6 +140,27 @@
       highlight colorcolumn ctermbg=4
 
       set clipboard=unnamed
+
+      " Use tab for trigger completion with characters ahead and navigate.
+      " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+      " other plugin before putting this into your config.
+      inoremap <silent><expr> <TAB>
+            \ pumvisible() ? "\<C-n>" :
+            \ <SID>check_back_space() ? "\<TAB>" :
+            \ coc#refresh()
+      inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+      function! s:check_back_space() abort
+        let col = col('.') - 1
+        return !col || getline('.')[col - 1]  =~# '\s'
+      endfunction
+
+      " use <c-space> for trigger completion.
+      inoremap <silent><expr> <c-space> coc#refresh()
+      " Make <CR> auto-select the first completion item and notify coc.nvim to
+      " format on enter, <cr> could be remapped by other vim plugin
+      inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                                    \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
     '';
   };
 }
