@@ -131,7 +131,7 @@
     kubernetes-helm
     ldns
     lm_sensors
-    manpages
+    man-pages
     minio-client
     mpv
     neofetch
