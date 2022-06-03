@@ -51,15 +51,6 @@
           };
         };
       }
-      {
-        condition = "gitdir:~/Documents/zelros/";
-        contents = {
-          user = {
-            email = "nicolas.froger@zelros.com";
-            signingKey = "E5C5184FEC5F8C6AB7BD56AC8552733297F5B117";
-          };
-        };
-      }
     ];
   };
 
