@@ -63,7 +63,7 @@ in
 
     # Authentication management.
     auth [success=1 default=ignore] ${pkgs.pam_krb5}/lib/security/pam_krb5.so use_first_pass
-    auth sufficient pam_unix.so nullok  use_first_pass
+    auth [success=done default=die] pam_unix.so nullok  use_first_pass
     auth optional ${pkgs.pam_mount}/lib/security/pam_mount.so disable_interactive
 
     # Password management.
