@@ -82,7 +82,7 @@
           inherit (pkgset system) pkgs pkgsUnstable pkgsMaster;
         in
         {
-          devShell = pkgs.mkShell {
+          devShells.default = pkgs.mkShell {
             buildInputs = with pkgs; [
               git
               nixpkgs-fmt
