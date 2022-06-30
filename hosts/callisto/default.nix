@@ -56,6 +56,10 @@
         };
       };
     };
+
+    timeServers = [
+      "ntp.pie.cri.epita.fr"
+    ];
   };
 
   # commented stuff is for pci passtrough vm, disabled because too many monitors
