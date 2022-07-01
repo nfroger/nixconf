@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, nixpkgs, nixpkgsUnstable, nixpkgsMaster, ... }:
 
 {
   imports = [
@@ -42,6 +42,12 @@
     binaryCachePublicKeys = [
       "cache.nix.cri.epita.fr:qDIfJpZWGBWaGXKO3wZL1zmC+DikhMwFRO4RVE6VVeo="
     ];
+
+    registry = {
+      nixpkgs.flake = nixpkgs;
+      nixpkgsUnstable.flake = nixpkgsUnstable;
+      nixpkgsMaster.flake = nixpkgsMaster;
+    };
   };
 
   # Use the systemd-boot EFI boot loader.

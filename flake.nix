@@ -13,7 +13,18 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
-  outputs = { self, nixpkgs, nixpkgsUnstable, nixpkgsMaster, home-manager, flake-utils, nixos-hardware }:
+  outputs =
+    { self
+
+    , nixpkgs
+    , nixpkgsUnstable
+    , nixpkgsMaster
+
+    , home-manager
+    , nixos-hardware
+
+    , flake-utils
+    } @ inputs:
     let
       inherit (nixpkgs) lib;
       inherit (lib) attrValues optional;
@@ -46,9 +57,7 @@
               in
               lib.nixosSystem {
                 inherit system;
-                specialArgs = {
-                  inherit nixos-hardware;
-                };
+                specialArgs = inputs;
                 modules = [
                   ./modules
                   (./. + "/hosts/${hostName}")
