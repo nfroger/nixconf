@@ -70,6 +70,14 @@
         hostname = "gate.cri.epita.fr";
         user = "root";
       };
+      "sw-core-cri" = {
+        hostname = "sw-core.mgmt.cri.epita.fr";
+        user = "manager";
+        extraOptions = {
+          "HostKeyAlgorithms" = "+ssh-rsa";
+          "KexAlgorithms" = "diffie-hellman-group14-sha1";
+        };
+      };
       "callisto" = {
         hostname = "gate.cri.epita.fr";
         port = 22426;
