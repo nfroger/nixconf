@@ -149,7 +149,7 @@
     spotify
     stern
     terraform
-    thunderbird
+    thunderbird-102
     tmux
     tree
     unzip
