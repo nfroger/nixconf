@@ -17,7 +17,7 @@
     hostName = "callisto";
 
     domain = "lab.cri.epita.fr";
-    nameservers = [ "91.243.117.210" ];
+    nameservers = [ "91.243.117.210" "8.8.8.8" ];
 
     bonds = {
       bond0 = {
