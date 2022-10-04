@@ -30,9 +30,19 @@
       };
     };
 
+    vlans = {
+      "bond0.48" = {
+        id = 48;
+        interface = "bond0";
+      };
+    };
+
     bridges = {
       br0 = {
         interfaces = [ "bond0" ];
+      };
+      "br0.48" = {
+        interfaces = [ "bond0.48" ];
       };
     };
 
