@@ -18,6 +18,7 @@
 
       charset display utf8
       charset outgoing utf8
+      set editor_command "${pkgs.neovim}/bin/nvim -c %d '%s'"
     '';
   };
 }
