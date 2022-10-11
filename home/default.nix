@@ -78,6 +78,13 @@
           "KexAlgorithms" = "diffie-hellman-group14-sha1";
         };
       };
+      "sw-rack-d-cri" = {
+        hostname = "sw-rack-d.mgmt.cri.epita.fr";
+        user = "manager";
+        extraOptions = {
+          "HostKeyAlgorithms" = "+ssh-rsa";
+        };
+      };
       "callisto" = {
         hostname = "gate.cri.epita.fr";
         port = 22426;
