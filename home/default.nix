@@ -4,6 +4,7 @@
   imports = [
     ./gui
     ./nvim.nix
+    ./packages.nix
     ./shell.nix
     ./slrn.nix
   ];

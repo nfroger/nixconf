@@ -114,14 +114,10 @@
   };
 
   environment.systemPackages = with pkgs; [
-    ansible
-    awscli
     chromium
     cifs-utils
-    claws-mail
     coreutils-full
     curl
-    discord
     file
     fzf
     git
@@ -129,33 +125,20 @@
     gnupg
     htop
     irssi
-    jq
     killall
-    krew
-    kubectl
-    kubectx
-    kubernetes-helm
     ldns
     lm_sensors
     man-pages
-    minio-client
     mpv
+    ncdu
     neofetch
     neovim
     ntfs3g
     p7zip
-    packer
-    slack
-    spotify
-    stern
-    terraform
     thunderbird-102
     tmux
     tree
     unzip
-    vault
-    virt-manager
-    vscodium
     wget
     yubikey-manager
     zathura
