@@ -71,7 +71,7 @@
         user = "root";
       };
       "sw-core-cri" = {
-        hostname = "sw-core.mgmt.cri.epita.fr";
+        hostname = "192.168.200.240";
         user = "manager";
         extraOptions = {
           "HostKeyAlgorithms" = "+ssh-rsa";
@@ -79,7 +79,7 @@
         };
       };
       "sw-rack-d-cri" = {
-        hostname = "sw-rack-d.mgmt.cri.epita.fr";
+        hostname = "192.168.200.74";
         user = "manager";
         extraOptions = {
           "HostKeyAlgorithms" = "+ssh-rsa";
