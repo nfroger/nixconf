@@ -68,7 +68,7 @@
 
       # CRI
       "fw-cri" = {
-        hostname = "gate.cri.epita.fr";
+        hostname = "91.243.117.211";
         user = "root";
       };
       "sw-core-cri" = {
