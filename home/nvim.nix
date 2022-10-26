@@ -48,6 +48,7 @@
 
       emmet-vim
       vim-polyglot
+      nerdtree
       {
         plugin = vimtex;
         config = ''
