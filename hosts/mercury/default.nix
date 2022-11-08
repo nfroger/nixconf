@@ -73,8 +73,8 @@ in
     user = "nicolas"
     group = "kvm"
     cgroup_device_acl = [
-        "/dev/input/by-id/usb-04d9_USB-HID_Keyboard-event-kbd",
-        "/dev/input/by-id/usb-Razer_Razer_DeathAdder_Essential-event-mouse",
+        "/dev/input/by-id/usb-Keychron_Keychron_Q1-if02-event-kbd",
+        "/dev/input/by-id/usb-093a_USB_OPTICAL_MOUSE-event-mouse",
         "/dev/null", "/dev/full", "/dev/zero",
         "/dev/random", "/dev/urandom",
         "/dev/ptmx", "/dev/kvm", "/dev/kqemu",
