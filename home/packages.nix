@@ -2,7 +2,7 @@
 
 {
   home.packages = with pkgs; [
-    (python310.withPackages (p: with p; [ poetry black ]))
+    (python310.withPackages (p: with p; [ ipython poetry black ]))
     ansible
     apache-directory-studio
     awscli2
