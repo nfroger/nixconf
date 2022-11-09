@@ -12,15 +12,15 @@ in
         position = "0 0";
         transform = "270";
       };
-      DP-1 = {
+      DP-2 = {
         position = "1080 420";
       };
-      DP-2 = {
+      DP-1 = {
         position = "3000 420";
       };
     };
-    workspaceOutputAssign = genWorkspaceAssign "DP-1" (builtins.genList (x: x + 1) 5)
-      ++ genWorkspaceAssign "DP-2" (builtins.genList (x: x + 6) 5) ++
+    workspaceOutputAssign = genWorkspaceAssign "DP-2" (builtins.genList (x: x + 1) 5)
+      ++ genWorkspaceAssign "DP-1" (builtins.genList (x: x + 6) 5) ++
       [{
         output = "VGA-1";
         workspace = "11";
