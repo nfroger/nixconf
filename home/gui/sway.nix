@@ -96,6 +96,7 @@ in
               "${modifier}+t" = "exec ${swaylockCommand}";
               "${modifier}+c" = "exec firefox";
               Print = "exec ${pkgs.grim}/bin/grim -g \"$(${pkgs.slurp}/bin/slurp)\" - | wl-copy";
+              "${modifier}+p" = "exec ${pkgs.grim}/bin/grim -g \"$(${pkgs.slurp}/bin/slurp)\" - | wl-copy";
               XF86MonBrightnessDown = "exec ${pkgs.brightnessctl}/bin/brightnessctl set 10%-";
               XF86MonBrightnessUp = "exec ${pkgs.brightnessctl}/bin/brightnessctl set +10%";
               XF86AudioMute = "exec ${pkgs.alsaUtils}/bin/amixer -q set Master toggle";
