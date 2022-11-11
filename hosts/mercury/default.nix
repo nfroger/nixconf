@@ -16,15 +16,22 @@ in
     nixos-hardware.nixosModules.common-pc-ssd
   ];
 
-  networking.hostName = "mercury";
+  networking = {
+    hostName = "mercury";
 
-  networking.interfaces.enp3s0.useDHCP = true;
-  networking.interfaces.br0.useDHCP = true;
-  networking.bridges = {
-    br0 = {
-      interfaces = [ "enp3s0" ];
+    bridges = {
+      br0 = {
+        interfaces = [ "enp3s0" ];
+      };
+    };
+
+    interfaces = {
+      enp3s0.useDHCP = true;
+      br0.useDHCP = true;
     };
   };
+
+
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "ehci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" "sr_mod" "alx" ];
   boot.initrd.kernelModules = [ "dm-snapshot" "dm-mod" "dm-crypt" "dm-thin-pool" ];
