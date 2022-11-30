@@ -1,1 +1,3 @@
-{ }
+{
+  services.lldpd.enable = true;
+}
