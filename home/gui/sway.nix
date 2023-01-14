@@ -6,7 +6,7 @@ let
     sha256 = "0fd43jgl4b2j8dyv800fvqzfijjsr48khapw11s75vc19glwrkab";
   };
 
-  swaylockCommand = "swaylock -F -e -l -i ${issBackground} --indicator-idle-visible";
+  swaylockCommand = "${pkgs.swaylock}/bin/swaylock -F -e -l -i ${issBackground} --indicator-idle-visible";
 in
 {
   programs.zsh.loginExtra = ''
@@ -121,8 +121,8 @@ in
     Service = {
       ExecStart = ''${pkgs.swayidle}/bin/swayidle \
         timeout 120 '${swaylockCommand}' \
-        timeout 200 'swaymsg "output * dpms off"' \
-          resume 'swaymsg "output * dpms on"' \
+        timeout 200 '${pkgs.sway}/bin/swaymsg "output * dpms off"' \
+          resume '${pkgs.sway}/bin/swaymsg "output * dpms on"' \
         before-sleep '${swaylockCommand}'
       '';
     };

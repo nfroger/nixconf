@@ -9,6 +9,8 @@
     ./slrn.nix
   ];
 
+  home.stateVersion = "18.09";
+
   home.sessionVariables = {
     EDITOR = "vim";
     VISUAL = "vim";

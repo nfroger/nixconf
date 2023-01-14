@@ -95,5 +95,5 @@
   };
 
   services.tumbler.enable = true;
-  services.xserver.desktopManager.xfce.thunarPlugins = with pkgs; [ xfce.tumbler ];
+  programs.thunar.plugins = with pkgs; [ xfce.tumbler ];
 }
