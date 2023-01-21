@@ -7,6 +7,8 @@
     noto-fonts-emoji
     overpass
     roboto
+    fira
+    ibm-plex
   ];
 
   environment.systemPackages = with pkgs; [
