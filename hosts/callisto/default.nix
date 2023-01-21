@@ -52,7 +52,9 @@
     };
 
     interfaces = {
-      eno1 = { };
+      eno1 = {
+        wakeOnLan.enable = true;
+      };
       enp3s0 = { };
       bond0 = { };
       br0 = {
@@ -73,7 +75,7 @@
   };
 
   # commented stuff is for pci passtrough vm, disabled because too many monitors
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ehci_pci" "ata_piix" "ahci" "usbhid" "usb_storage" "sd_mod" "sr_mod" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "ehci_pci" "ata_piix" "ahci" "usbhid" "usb_storage" "sd_mod" "sr_mod" "e1000e" ];
   boot.initrd.kernelModules = [ "dm-snapshot" "dm-mod" "dm-cache" "dm-cache-smq" "dm-thin-pool" "dm-raid" "raid1" "dm-crypt" ];
   boot.kernelModules = [ "kvm-intel" /*"vfio_pci" "vfio" "vfio_iommu_type1" "vfio_virqfd"*/ ];
   boot.extraModulePackages = [ ];
