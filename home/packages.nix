@@ -9,6 +9,7 @@
     discord
     gnumeric
     imagemagick
+    jetbrains.idea-community
     jq
     krew
     kubectl
