@@ -1,5 +1,5 @@
 let
-  sshkeys = import ../../vars/ssh_keys.nix;
+  sshkeys = import ../vars/ssh_keys.nix;
 in
 {
   boot.initrd.network.enable = true;
