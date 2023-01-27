@@ -39,9 +39,11 @@
       auto-optimise-store = true;
       substituters = [
         "https://s3.cri.epita.fr/cri-nix-cache.s3.cri.epita.fr"
+        "https://s3next.kektus.xyz/kektus-nix-cache"
       ];
       trusted-public-keys = [
         "cache.nix.cri.epita.fr:qDIfJpZWGBWaGXKO3wZL1zmC+DikhMwFRO4RVE6VVeo="
+        "kektus-nix-cache:djm3CvTdE+0Z5F6h1Qjyew3dFi8X5ElpgIyXSvfakr0="
       ];
     };
 
