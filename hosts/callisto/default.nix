@@ -19,30 +19,26 @@
     domain = "lab.cri.epita.fr";
     nameservers = [ "91.243.117.210" "8.8.8.8" ];
 
-    bonds = {
-      bond0 = {
-        interfaces = [ "eno1" "enp3s0" ];
-        driverOptions = {
-          mode = "802.3ad";
-          lacp_rate = "fast";
-          xmit_hash_policy = "layer3+4";
-        };
-      };
-    };
-
     vlans = {
-      "bond0.48" = {
-        id = 48;
-        interface = "bond0";
+      "eno1.233" = {
+        id = 233;
+        interface = "eno1";
+      };
+      "eno1.2104" = {
+        id = 2104;
+        interface = "eno1";
       };
     };
 
     bridges = {
       br0 = {
-        interfaces = [ "bond0" ];
+        interfaces = [ "eno1" ];
       };
-      "br0.48" = {
-        interfaces = [ "bond0.48" ];
+      "br0.233" = {
+        interfaces = [ "eno1.233" ];
+      };
+      "br0.2104" = {
+        interfaces = [ "eno1.2104" ];
       };
     };
 
@@ -55,8 +51,6 @@
       eno1 = {
         wakeOnLan.enable = true;
       };
-      enp3s0 = { };
-      bond0 = { };
       br0 = {
         ipv4 = {
           addresses = [
@@ -67,6 +61,8 @@
           ];
         };
       };
+      "br0.233".useDHCP = true;
+      "br0.2104".useDHCP = true;
     };
 
     timeServers = [
