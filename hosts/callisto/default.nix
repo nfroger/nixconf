@@ -109,18 +109,19 @@
   };
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/83792639-dbde-4742-a03b-6cdf6de0f51e";
+    {
+      device = "/dev/disk/by-uuid/83792639-dbde-4742-a03b-6cdf6de0f51e";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/E3D5-9873";
+    {
+      device = "/dev/disk/by-uuid/E3D5-9873";
       fsType = "vfat";
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/1f3acca2-26d3-4349-ae67-1930f47afea8"; }
-    ];
+    [{ device = "/dev/disk/by-uuid/1f3acca2-26d3-4349-ae67-1930f47afea8"; }];
 
   virtualisation.libvirtd.allowedBridges = [ "br0" ];
   virtualisation.libvirtd.qemu.verbatimConfig = ''
