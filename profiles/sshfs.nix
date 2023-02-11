@@ -42,15 +42,24 @@ in
   security.pam.services.login.pamMount = true;
   security.pam.mount = {
     enable = true;
-    additionalSearchPaths = [ pkgs.sshfs ];
+    additionalSearchPaths = [ pkgs.sshfs pkgs.gocryptfs ];
+    # The extra path option is a workaround for
+    # https://github.com/NixOS/nixpkgs/issues/201368
     extraVolumes = [
       ''
+        <path>${pkgs.util-linux}/bin:/run/wrappers/bin:${pkgs.sshfs}/bin:${pkgs.gocryptfs}/bin</path>
         <volume
           fstype="fuse"
           path="sshfs#%(USER)@${sshfsServer}:"
-          mountpoint="~/sshfs"
+          mountpoint="/home/%(USER)/.sshfs_crypted"
           ssh="0"
           options="reconnect,port=${port}"
+        />
+
+        <volume
+          fstype="fuse"
+          path="gocryptfs#/home/%(USER)/.sshfs_crypted/encrypted"
+          mountpoint="/home/%(USER)/sshfs"
         />
       ''
     ];
