@@ -62,7 +62,7 @@
     enable = true;
     forwardAgent = false;
     controlMaster = "yes";
-    controlPersist = "yes";
+    controlPersist = "10m";
     matchBlocks = {
       "*.kektus.xyz" = {
         user = "root";
