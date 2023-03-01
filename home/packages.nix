@@ -9,7 +9,9 @@
     discord
     gnumeric
     imagemagick
-    jetbrains.idea-community
+    jetbrains.idea-ultimate
+    maven
+    jdk
     jq
     libreoffice
     minio-client
