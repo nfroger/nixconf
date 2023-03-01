@@ -7,6 +7,7 @@
     ./packages.nix
     ./shell.nix
     ./slrn.nix
+    ./kubecli-packages.nix
   ];
 
   home.stateVersion = "18.09";

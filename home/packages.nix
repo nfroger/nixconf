@@ -11,11 +11,6 @@
     imagemagick
     jetbrains.idea-community
     jq
-    krew
-    kubectl
-    kubectx
-    kubernetes-helm
-    kustomize
     libreoffice
     minio-client
     openldap
@@ -23,7 +18,6 @@
     packer
     slack
     spotify
-    stern
     teams
     terraform
     vault
