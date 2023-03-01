@@ -151,5 +151,7 @@
     fakestat = true;
   };
 
+  services.printing.drivers = with pkgs; [ hplip ];
+
   system.stateVersion = "22.11";
 }
