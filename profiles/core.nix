@@ -95,6 +95,7 @@
 
   networking.wireguard.enable = true;
 
+  security.pam.krb5.enable = false;
   krb5 = {
     enable = true;
     libdefaults = {

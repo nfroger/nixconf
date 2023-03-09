@@ -39,6 +39,7 @@ in
     '';
   };
 
+  security.pam.krb5.enable = true;
   security.pam.services.login.pamMount = true;
   security.pam.mount = {
     enable = true;
