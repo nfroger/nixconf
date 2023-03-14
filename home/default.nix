@@ -48,6 +48,14 @@
         };
       }
       {
+        condition = "gitdir:~/Documents/forge/";
+        contents = {
+          user = {
+            email = "nico@cri.epita.fr";
+          };
+        };
+      }
+      {
         condition = "gitdir:~/Documents/epita/";
         contents = {
           user = {
