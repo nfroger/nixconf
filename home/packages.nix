@@ -7,10 +7,12 @@
     apache-directory-studio
     awscli2
     discord
+    dynamips
     gnumeric
     gns3-gui
     gns3-server
     imagemagick
+    inetutils
     jetbrains.idea-ultimate
     maven
     jdk
