@@ -10,10 +10,11 @@
 
   users.users.nicolas = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "libvirtd" "input" "kvm" "docker" "video" "dialout" ];
+    extraGroups = [ "wheel" "libvirtd" "input" "kvm" "docker" "video" "dialout" "ubridge" ];
     shell = pkgs.zsh;
     hashedPassword = "$6$2xUbJKyOp0o0Hn2k$mFqM7kCQwqAjwdtuRZRQDrGPZrxV6coKoEHiW0m7AwET6LI9WOn6yT6oVumVbF0dkzfzRQk2/m4vxt45DTlHY/";
   };
+  users.groups.ubridge = { };
 
   documentation.dev.enable = true;
   time.timeZone = "Europe/Paris";
@@ -117,6 +118,14 @@
         kdc = "kerberos.kektus.xyz";
       };
     };
+  };
+
+  security.wrappers.ubridge = {
+    source = "${pkgs.ubridge}/bin/ubridge";
+    capabilities = "cap_net_admin,cap_net_raw=ep";
+    owner = "root";
+    group = "ubridge";
+    permissions = "u+rx,g+x";
   };
 
   environment.systemPackages = with pkgs; [

@@ -1,4 +1,4 @@
-{ nixos-hardware, ... }:
+{ pkgs, nixos-hardware, ... }:
 
 {
   # Dell XPS 15 9570

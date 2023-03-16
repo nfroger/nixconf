@@ -8,6 +8,8 @@
     awscli2
     discord
     gnumeric
+    gns3-gui
+    gns3-server
     imagemagick
     jetbrains.idea-ultimate
     maven
