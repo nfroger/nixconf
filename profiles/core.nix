@@ -94,6 +94,7 @@
     enableSSHSupport = true;
   };
   programs.wireshark.enable = true;
+  programs.wireshark.package = pkgs.wireshark;
 
   networking.wireguard.enable = true;
 
