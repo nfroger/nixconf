@@ -43,25 +43,25 @@
 
   boot.initrd.luks.devices = {
     cryptlvm = {
-      device = "/dev/disk/by-uuid/9a83d0df-18bc-473d-928e-5a3d4f3149b4";
+      device = "/dev/disk/by-uuid/d2a4a6f4-2c6c-4fb7-af8a-88d0a56bb262";
       preLVM = false;
     };
   };
 
   fileSystems."/" =
     {
-      device = "/dev/disk/by-uuid/4157cd65-3e83-46cf-9ab7-cb11b158a842";
+      device = "/dev/disk/by-uuid/dec301b6-195d-4281-b6df-616c1d483fd2";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
     {
-      device = "/dev/disk/by-uuid/4532-1F9D";
+      device = "/dev/disk/by-uuid/0BEE-B0C9";
       fsType = "vfat";
     };
 
   swapDevices =
-    [{ device = "/dev/disk/by-uuid/6d9b9de5-dd5a-44d7-989d-562f36f20b8a"; }];
+    [{ device = "/dev/disk/by-uuid/0b76c53e-0964-44e4-8d4e-071abe9d7127"; }];
 
   virtualisation.libvirtd.allowedBridges = [ "br0" ];
   virtualisation.libvirtd.qemu.verbatimConfig = ''
