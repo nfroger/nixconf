@@ -2,7 +2,7 @@
 
 let
   issBackground = builtins.fetchurl {
-    url = https://static.k8s.kektus.xyz/uploads/iss063e034054.jpg;
+    url = https://s3.kektus.fr/kektus-uploads/iss063e034054.jpg;
     sha256 = "0fd43jgl4b2j8dyv800fvqzfijjsr48khapw11s75vc19glwrkab";
   };
 
