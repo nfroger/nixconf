@@ -1,4 +1,4 @@
-{ pkgs, lib, nixpkgs, nixpkgsUnstable, nixpkgsMaster, ... }:
+{ config, pkgs, lib, nixpkgs, nixpkgsUnstable, nixpkgsMaster, ... }:
 
 {
   imports = [
@@ -60,7 +60,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   boot.extraModulePackages = with pkgs; [
-    linuxPackages.v4l2loopback
+    config.boot.kernelPackages.v4l2loopback
   ];
   boot.kernelModules = [ "v4l2loopback" ];
 
