@@ -97,6 +97,14 @@
           "HostKeyAlgorithms" = "+ssh-rsa";
         };
       };
+      "sw-mgmt-cri" = {
+        hostname = "192.168.200.241";
+        user = "manager";
+        extraOptions = {
+          "HostKeyAlgorithms" = "+ssh-rsa";
+          "KexAlgorithms" = "diffie-hellman-group1-sha1";
+        };
+      };
       "callisto" = {
         hostname = "gate.cri.epita.fr";
         port = 22426;
