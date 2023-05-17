@@ -84,7 +84,7 @@
     };
 
     timeServers = [
-      "ntp.pie.cri.epita.fr"
+      "10.201.5.2"
     ];
   };
 
