@@ -20,10 +20,6 @@
     nameservers = [ "91.243.117.210" "8.8.8.8" ];
 
     vlans = {
-      "eno1.333" = {
-        id = 333;
-        interface = "eno1";
-      };
       "eno1.240" = {
         id = 240;
         interface = "eno1";
@@ -33,9 +29,6 @@
     bridges = {
       br0 = {
         interfaces = [ "eno1" ];
-      };
-      "br0.333" = {
-        interfaces = [ "eno1.333" ];
       };
       "br0.240" = {
         interfaces = [ "eno1.240" ];
@@ -61,22 +54,15 @@
               prefixLength = 16;
               via = "192.168.240.254";
             }
-          ];
-        };
-      };
-      "br0.333" = {
-        useDHCP = true;
-        ipv4 = {
-          routes = [
             {
               address = "10.224.0.0";
               prefixLength = 16;
-              via = "10.224.33.254";
+              via = "192.168.240.254";
             }
             {
               address = "10.57.0.0";
               prefixLength = 16;
-              via = "10.224.33.254";
+              via = "192.168.240.254";
             }
           ];
         };
