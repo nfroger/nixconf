@@ -93,7 +93,7 @@
       };
       "sw-rack-d-cri" = {
         hostname = "192.168.200.74";
-        user = "manager";
+        user = "admin";
         extraOptions = {
           "HostKeyAlgorithms" = "+ssh-rsa";
         };
