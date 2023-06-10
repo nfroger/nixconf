@@ -19,6 +19,7 @@ in
     imagemagick
     inetutils
     jdk
+    jellyfin-mpv-shim
     jetbrains.idea-ultimate
     jq
     libreoffice
