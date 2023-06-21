@@ -39,17 +39,5 @@
         }
       ];
     };
-    dockedOffice = {
-      outputs = [
-        {
-          criteria = "eDP-1";
-          status = "disable";
-        }
-        {
-          criteria = "Lenovo Group Limited LEN";
-          scale = 1.25;
-        }
-      ];
-    };
   };
 }
