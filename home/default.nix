@@ -115,6 +115,10 @@
         proxyJump = "fw-cri";
         user = "root";
       };
+      "*.forge.epita.fr" = {
+        proxyJump = "fw-cri";
+        user = "root";
+      };
       "os-bastion" = {
         hostname = "bastion.iaas.cri.epita.fr";
         user = "root";
