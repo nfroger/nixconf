@@ -27,7 +27,7 @@
     };
   };
 
-  programs.mako = {
+  services.mako = {
     enable = true;
     backgroundColor = "#424242";
     borderRadius = 5;

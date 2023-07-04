@@ -6,7 +6,7 @@ let
 in
 {
   home.packages = with pkgs; [
-    (python310.withPackages (p: with p; [ ipython poetry black ]))
+    (python310.withPackages (p: with p; [ ipython black ]))
     ansible
     apache-directory-studio
     awscli2
@@ -29,6 +29,7 @@ in
     openssl
     packer
     pieVNC
+    poetry
     slack
     spotify
     teams

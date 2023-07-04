@@ -6,7 +6,7 @@
     ./gui.nix
   ];
 
-  boot.tmpOnTmpfs = true;
+  boot.tmp.useTmpfs = true;
 
   users.users.nicolas = {
     isNormalUser = true;
@@ -93,6 +93,7 @@
     enable = true;
     enableSSHSupport = true;
   };
+  programs.zsh.enable = true;
   programs.wireshark.enable = true;
   programs.wireshark.package = pkgs.wireshark;
 
