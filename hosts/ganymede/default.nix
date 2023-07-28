@@ -19,7 +19,6 @@
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
   hardware.enableRedistributableFirmware = true;
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_2;
 
   boot.initrd.luks.devices = {
     cryptlvm = {
