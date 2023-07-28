@@ -29,11 +29,11 @@
           status = "disable";
         }
         {
-          criteria = "BenQ Corporation BenQ XL2411Z 6AF01007SL0";
+          criteria = "BNQ BenQ XL2411Z 6AF01007SL0";
           position = "1080,470";
         }
         {
-          criteria = "BenQ Corporation BenQ GW2480 ETV5L03568SL0";
+          criteria = "BNQ BenQ GW2480 ETV5L03568SL0";
           position = "0,0";
           transform = "90";
         }
