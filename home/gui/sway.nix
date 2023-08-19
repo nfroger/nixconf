@@ -74,10 +74,17 @@ in
             }
             {
               criteria = {
-                window_type = "floating_con";
                 app_id = "thunderbird";
+                title = "";
               };
               command = "floating enable";
+            }
+            {
+              criteria = {
+                app_id = "thunderbird";
+                title = "";
+              };
+              command = "sticky enable";
             }
           ];
         };
