@@ -75,14 +75,14 @@ in
             {
               criteria = {
                 app_id = "thunderbird";
-                title = "";
+                title = "^$";
               };
               command = "floating enable";
             }
             {
               criteria = {
                 app_id = "thunderbird";
-                title = "";
+                title = "^$";
               };
               command = "sticky enable";
             }
