@@ -72,6 +72,13 @@ in
               };
               command = "floating enable";
             }
+            {
+              criteria = {
+                window_type = "floating_con";
+                app_id = "thunderbird";
+              };
+              command = "floating enable";
+            }
           ];
         };
         modes = lib.mkOptionDefault {
