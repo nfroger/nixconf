@@ -132,12 +132,12 @@
         proxyJump = "fw-cri";
         user = "root";
       };
-      "acu-bastion" = {
-        hostname = "bastion.iaas.assistants.epita.fr";
+      "3ie-bastion" = {
+        hostname = "bastion.iaas.3ie.epita.fr";
         user = "root";
       };
-      "*.assistants.openstack.epita.fr" = {
-        proxyJump = "acu-bastion";
+      "*.3ie.openstack.epita.fr" = {
+        proxyJump = "3ie-bastion";
         user = "root";
       };
       "git.cri.epita.fr" = {
