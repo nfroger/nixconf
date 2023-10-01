@@ -72,6 +72,7 @@
   services.pcscd.enable = true; # Smartcard support
   services.printing.enable = true;
   services.smartd.enable = true;
+  services.usbmuxd.enable = true;
 
   virtualisation.libvirtd.enable = true;
   virtualisation.libvirtd.qemu.ovmf.enable = true;
