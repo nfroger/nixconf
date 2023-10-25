@@ -1,12 +1,12 @@
 { pkgs, config, lib, ... }:
 
 let
-  issBackground = builtins.fetchurl {
-    url = https://s3.kektus.fr/kektus-uploads/iss063e034054.jpg;
-    sha256 = "0fd43jgl4b2j8dyv800fvqzfijjsr48khapw11s75vc19glwrkab";
+  backgroundPicture = builtins.fetchurl {
+    url = https://s3.kektus.fr/kektus-uploads/DSC00554.jpg;
+    sha256 = "0ggicqmfbh9cfwhjgyviaisbr93fqyvhz8wb0kc3kdff3hww4fp9";
   };
 
-  swaylockCommand = "${pkgs.swaylock}/bin/swaylock -F -e -l -i ${issBackground} --indicator-idle-visible";
+  swaylockCommand = "${pkgs.swaylock}/bin/swaylock -F -e -l -i ${backgroundPicture} --indicator-idle-visible";
 in
 {
   programs.zsh.loginExtra = ''
@@ -53,7 +53,7 @@ in
         };
         output = {
           "*" = {
-            bg = issBackground + " fill";
+            bg = backgroundPicture + " fill";
           };
         };
         window = {
