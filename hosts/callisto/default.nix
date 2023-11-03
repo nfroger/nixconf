@@ -48,23 +48,6 @@
               prefixLength = 24;
             }
           ];
-          routes = [
-            {
-              address = "192.168.0.0";
-              prefixLength = 16;
-              via = "192.168.240.254";
-            }
-            {
-              address = "10.224.0.0";
-              prefixLength = 16;
-              via = "192.168.240.254";
-            }
-            {
-              address = "10.57.0.0";
-              prefixLength = 16;
-              via = "192.168.240.254";
-            }
-          ];
         };
       };
     };
