@@ -49,6 +49,7 @@
       emmet-vim
       vim-polyglot
       nerdtree
+      vim-indent-guides
       {
         plugin = vimtex;
         config = ''
