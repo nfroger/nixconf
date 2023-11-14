@@ -35,6 +35,9 @@
           inherit system;
           config = {
             allowUnfree = true;
+            permittedInsecurePackages = [
+              "teams-1.5.00.23861"
+            ];
           };
           overlays = (attrValues self.overlays) ++ (optional withOverrides self.overrides.${system});
         };
