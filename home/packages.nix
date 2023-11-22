@@ -21,6 +21,8 @@ in
     jdk
     jellyfin-mpv-shim
     jetbrains.idea-ultimate
+    jetbrains.rider
+    dotnet-sdk_7
     jq
     libreoffice
     maven
