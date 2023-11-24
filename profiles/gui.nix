@@ -49,6 +49,7 @@
       swayidle
       swaylock
       waybar
+      wdisplays
       wl-clipboard
       xdg-desktop-portal-wlr
       xwayland
