@@ -16,7 +16,11 @@ in
         position = "1080,500";
       };
     };
-    workspaceOutputAssign = genWorkspaceAssign "HDMI-A-1" (builtins.genList (x: x + 1) 5)
-      ++ genWorkspaceAssign "DP-1" (builtins.genList (x: x + 6) 5);
+    workspaceOutputAssign = [
+        {
+            output = "DP-1";
+            workspace = "11";
+        }
+    ];
   };
 }
