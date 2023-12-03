@@ -1,10 +1,10 @@
 { pkgs, config, ... }:
 
 {
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     source-code-pro
     font-awesome
-    noto-fonts-emoji
+    noto-fonts-color-emoji
     overpass
     roboto
     fira

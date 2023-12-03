@@ -3,6 +3,9 @@ let
   pieVNC = pkgs.writeScriptBin "pieVNC" ''
     ssh -S none -t -L 5900:localhost:5900 "root@$1" 'x11vnc -auth /home/$(loginctl | grep -v tty | grep seat0 | awk '\'''{ print $3 }'\''')/.Xauthority -localhost -display :0'
   '';
+  teams = pkgs.writeScriptBin "teams" ''
+    ${pkgs.chromium}/bin/chromium --app=https://teams.microsoft.com
+  '';
 in
 {
   home.packages = with pkgs; [

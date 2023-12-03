@@ -24,8 +24,6 @@
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand";
 
-  nixpkgs.config.allowUnfree = true;
-
   nix = {
     package = pkgs.nixUnstable;
     extraOptions = ''
