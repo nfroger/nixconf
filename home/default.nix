@@ -106,11 +106,37 @@
           "KexAlgorithms" = "diffie-hellman-group1-sha1";
         };
       };
+      "os-bastion" = {
+        hostname = "bastion.iaas.cri.epita.fr";
+        user = "root";
+        port = 2222;
+      };
       "callisto" = {
         hostname = "gate.cri.epita.fr";
         port = 22426;
         user = "nicolas";
       };
+
+      "gitlab.cri.epita.fr" = lib.hm.dag.entryBefore [ "*.cri.epita.fr" ] {
+        proxyJump = "none";
+        extraOptions = {
+          GSSAPIAuthentication = "yes";
+        };
+      };
+      "git.forge.epita.fr" = lib.hm.dag.entryBefore [ "*.forge.epita.fr" ] {
+        proxyJump = "none";
+        extraOptions = {
+          GSSAPIAuthentication = "yes";
+        };
+      };
+      "ssh.cri.epita.fr" = lib.hm.dag.entryBefore [ "*.cri.epita.fr" ] {
+        proxyJump = "none";
+        extraOptions = {
+          GSSAPIAuthentication = "yes";
+          GSSAPIDelegateCredentials = "yes";
+        };
+      };
+
       "*.cri.epita.fr" = {
         proxyJump = "fw-cri";
         user = "root";
@@ -118,11 +144,6 @@
       "*.forge.epita.fr" = {
         proxyJump = "fw-cri";
         user = "root";
-      };
-      "os-bastion" = {
-        hostname = "bastion.iaas.cri.epita.fr";
-        user = "root";
-        port = 2222;
       };
       "*.cri.openstack.epita.fr" = {
         proxyJump = "os-bastion";
@@ -139,17 +160,6 @@
       "*.3ie.openstack.epita.fr" = {
         proxyJump = "3ie-bastion";
         user = "root";
-      };
-      "git.cri.epita.fr" = {
-        extraOptions = {
-          GSSAPIAuthentication = "yes";
-        };
-      };
-      "ssh.cri.epita.fr" = {
-        extraOptions = {
-          GSSAPIAuthentication = "yes";
-          GSSAPIDelegateCredentials = "yes";
-        };
       };
     };
   };
