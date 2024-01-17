@@ -1,3 +1,5 @@
+{ lib, ... }:
+
 let
   genWorkspaceAssign = disp:
     map (n: {
@@ -26,4 +28,6 @@ in
         workspace = "11";
       }];
   };
+
+  programs.ssh.matchBlocks."fw-cri".hostname = lib.mkForce "10.201.5.2";
 }

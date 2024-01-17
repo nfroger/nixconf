@@ -39,6 +39,7 @@
       pull.rebase = true;
     };
     ignores = [ ".direnv" ];
+    lfs.enable = true;
     includes = [
       {
         condition = "gitdir:~/Documents/cri/";
