@@ -113,9 +113,9 @@
         port = 2222;
       };
       "callisto" = {
-        hostname = "gate.cri.epita.fr";
-        port = 22426;
+        hostname = "10.201.4.10";
         user = "nicolas";
+        proxyJump = "fw-cri";
       };
 
       "gitlab.cri.epita.fr" = lib.hm.dag.entryBefore [ "*.cri.epita.fr" ] {
