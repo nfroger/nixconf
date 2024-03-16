@@ -38,7 +38,7 @@ in
     slack
     spotify
     teams
-    terraform
+    opentofu
     vault
     virt-manager
     vscodium
