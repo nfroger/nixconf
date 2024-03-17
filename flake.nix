@@ -35,6 +35,9 @@
           inherit system;
           config = {
             allowUnfree = true;
+            permittedInsecurePackages = [
+              "nix-2.15.3"
+            ];
           };
           overlays = (attrValues self.overlays) ++ (optional withOverrides self.overrides.${system});
         };
