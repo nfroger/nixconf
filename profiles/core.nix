@@ -54,7 +54,12 @@
   };
 
   # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot = {
+    enable = true;
+    extraInstallCommands = ''
+      ${pkgs.gnused}/bin/sed -i 's/^default .\+$/default @saved/' /boot/loader/loader.conf
+    '';
+  };
   boot.loader.efi.canTouchEfiVariables = true;
 
   boot.extraModulePackages = with pkgs; [
