@@ -8,17 +8,18 @@ in
 {
   wayland.windowManager.sway.config = {
     output = {
-      DP-1 = {
-        position = "0,0";
-        transform = "270";
+      DP-2 = {
+        mode = "1920x1080@165Hz";
+        position = "1080,410";
       };
       HDMI-A-1 = {
-        position = "1080,500";
+        position = "0,0";
+        transform = "270";
       };
     };
     workspaceOutputAssign = [
         {
-            output = "DP-1";
+            output = "HDMI-A-1";
             workspace = "11";
         }
     ];

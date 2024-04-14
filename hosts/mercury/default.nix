@@ -11,6 +11,7 @@
     nixos-hardware.nixosModules.common-cpu-intel
     nixos-hardware.nixosModules.common-pc
     nixos-hardware.nixosModules.common-pc-ssd
+    nixos-hardware.nixosModules.common-gpu-amd
   ];
 
   networking = {
@@ -18,12 +19,12 @@
 
     bridges = {
       br0 = {
-        interfaces = [ "enp3s0" ];
+        interfaces = [ "enp5s0" ];
       };
     };
 
     interfaces = {
-      enp3s0.useDHCP = true;
+      enp5s0.useDHCP = true;
       br0.useDHCP = true;
     };
   };
@@ -32,9 +33,8 @@
   boot.initrd.kernelModules = [ "dm-snapshot" "dm-mod" "dm-crypt" "dm-thin-pool" ];
   boot.kernelModules = [ "kvm-intel" "vfio_pci" "vfio" "vfio_iommu_type1" "vfio_virqfd" ];
   boot.extraModulePackages = [ ];
-  boot.kernelParams = [ "intel_iommu=on" "iommu=pt" "vfio-pci.ids=10de:13c2,10de:0fbb" ];
+  boot.kernelParams = [];
   boot.extraModprobeConfig = ''
-    options vfio-pci ids=10de:13c2,10de:0fbb
     options kvm_intel nested=1
   '';
   boot.kernel.sysctl = {
@@ -47,6 +47,7 @@
       preLVM = false;
     };
   };
+  hardware.enableRedistributableFirmware = true;
 
   fileSystems."/" =
     {
