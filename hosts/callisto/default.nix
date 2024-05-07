@@ -59,8 +59,8 @@
   };
 
   # commented stuff is for pci passtrough vm, disabled because too many monitors
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ehci_pci" "ata_piix" "ahci" "usbhid" "usb_storage" "sd_mod" "sr_mod" "e1000e" ];
-  boot.initrd.kernelModules = [ "dm-snapshot" "dm-mod" "dm-cache" "dm-cache-smq" "dm-thin-pool" "dm-raid" "raid1" "dm-crypt" "bridge" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "ehci_pci" "ata_piix" "ahci" "usbhid" "usb_storage" "sd_mod" "sr_mod" ];
+  boot.initrd.kernelModules = [ "dm-mod" "dm-crypt" "e1000e" "bridge" ];
   boot.kernelModules = [ "kvm-intel" /*"vfio_pci" "vfio" "vfio_iommu_type1" "vfio_virqfd"*/ ];
   boot.extraModulePackages = [ ];
   boot.kernelParams = [ "intel_iommu=on" "iommu=pt" /*"vfio-pci.ids=10de:1c81,10de:0fb9"*/ ];
@@ -71,24 +71,6 @@
   boot.kernel.sysctl = {
     "net.ipv4.ip_forward" = 1;
   };
-
-  boot.initrd.extraUtilsCommands = ''
-    for BIN in ${pkgs.thin-provisioning-tools}/{s,}bin/*; do
-        copy_bin_and_libs $BIN
-    done
-  '';
-  # Before LVM commands are executed, ensure that LVM knows exactly where our cache and thin provisioning tools are
-  boot.initrd.preLVMCommands = ''
-    mkdir -p /etc/lvm
-    echo "global/thin_check_executable = "$(which thin_check)"" >> /etc/lvm/lvm.conf
-    echo "global/cache_check_executable = "$(which cache_check)"" >> /etc/lvm/lvm.conf
-    echo "global/cache_dump_executable = "$(which cache_dump)"" >> /etc/lvm/lvm.conf
-    echo "global/cache_repair_executable = "$(which cache_repair)"" >> /etc/lvm/lvm.conf
-    echo "global/thin_dump_executable = "$(which thin_dump)"" >> /etc/lvm/lvm.conf
-    echo "global/thin_repair_executable = "$(which thin_repair)"" >> /etc/lvm/lvm.conf
-  '';
-
-  services.lvm.boot.thin.enable = true;
 
   boot.initrd.luks.devices = {
     cryptlvm = {
