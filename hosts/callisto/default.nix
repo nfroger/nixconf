@@ -37,6 +37,7 @@
 
     interfaces = {
       eno1 = {
+        useDHCP = true;
         wakeOnLan.enable = true;
       };
       "br0".useDHCP = true;
