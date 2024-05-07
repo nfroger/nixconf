@@ -14,31 +14,39 @@ in
     apache-directory-studio
     awscli2
     discord
+    dotnet-sdk_7
     dynamips
+    ffmpeg
+    gimp
     gnome.vinagre
     gns3-gui
     gns3-server
     gnumeric
     imagemagick
     inetutils
+    inkscape
+    ipcalc
     jdk
     jellyfin-mpv-shim
     jetbrains.idea-ultimate
     jetbrains.rider
-    dotnet-sdk_7
     jq
     libreoffice
     maven
     minio-client
     openldap
     openssl
+    opentofu
     packer
     pieVNC
     poetry
+    postgresql
+    pv
+    pwgen
     slack
     spotify
+    tcpdump
     teams
-    opentofu
     vault
     virt-manager
     vscodium
