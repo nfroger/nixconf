@@ -112,6 +112,10 @@
         user = "root";
         port = 2222;
       };
+      "play-bastion" = {
+        hostname = "bastion.cri-playground.iaas.epita.fr";
+        user = "root";
+      };
       "callisto" = {
         hostname = "10.201.4.10";
         user = "nicolas";
@@ -148,6 +152,10 @@
       };
       "*.cri.openstack.epita.fr" = {
         proxyJump = "os-bastion";
+        user = "root";
+      };
+      "*.cri_playground.openstack.epita.fr" = {
+        proxyJump = "play-bastion";
         user = "root";
       };
       "*.3ie.fr" = {
