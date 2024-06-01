@@ -2,11 +2,11 @@
   description = "My personal NixOS configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
     nixpkgsUnstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgsMaster.url = "github:NixOS/nixpkgs/master";
     home-manager = {
-      url = "github:nix-community/home-manager/release-23.11";
+      url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     flake-utils.url = "github:numtide/flake-utils";
@@ -35,9 +35,6 @@
           inherit system;
           config = {
             allowUnfree = true;
-            permittedInsecurePackages = [
-              "nix-2.15.3"
-            ];
           };
           overlays = (attrValues self.overlays) ++ (optional withOverrides self.overrides.${system});
         };

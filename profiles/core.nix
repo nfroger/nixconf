@@ -25,9 +25,9 @@
   powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand";
 
   nix = {
-    package = pkgs.nixUnstable;
+    package = pkgs.nixVersions.latest;
     extraOptions = ''
-      experimental-features = nix-command flakes repl-flake
+      experimental-features = nix-command flakes
     '';
     gc = {
       options = "--delete-older-than 10d";
@@ -69,7 +69,7 @@
 
   # Services
   services.avahi.enable = true;
-  services.avahi.nssmdns = true;
+  services.avahi.nssmdns4 = true;
   services.gvfs.enable = true;
   services.openssh.enable = true;
   services.pcscd.enable = true; # Smartcard support
@@ -104,25 +104,27 @@
   networking.wireguard.enable = true;
 
   security.pam.krb5.enable = false;
-  krb5 = {
+  security.krb5 = {
     enable = true;
-    libdefaults = {
-      default_realm = "KEKTUS.XYZ";
-      dns_fallback = true;
-      dns_canonicalize_hostname = false;
-      rnds = false;
-    };
+    settings = {
+      libdefaults = {
+        default_realm = "KEKTUS.XYZ";
+        dns_fallback = true;
+        dns_canonicalize_hostname = false;
+        rnds = false;
+      };
 
-    realms = {
-      "CRI.EPITA.FR" = {
-        admin_server = "kerberos.pie.cri.epita.fr";
-      };
-      "UNDERCLOUD.CRI.EPITA.FR" = {
-        admin_server = "kerberos.undercloud.cri.epita.fr";
-      };
-      "KEKTUS.XYZ" = {
-        admin_server = "kerberos.kektus.xyz";
-        kdc = "kerberos.kektus.xyz";
+      realms = {
+        "CRI.EPITA.FR" = {
+          admin_server = "kerberos.pie.cri.epita.fr";
+        };
+        "UNDERCLOUD.CRI.EPITA.FR" = {
+          admin_server = "kerberos.undercloud.cri.epita.fr";
+        };
+        "KEKTUS.XYZ" = {
+          admin_server = "kerberos.kektus.xyz";
+          kdc = "kerberos.kektus.xyz";
+        };
       };
     };
   };

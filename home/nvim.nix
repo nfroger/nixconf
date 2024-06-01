@@ -9,27 +9,12 @@
       enable = true;
       settings = {
         "rust-analyzer.serverPath" = "rust-analyzer";
-        languageserver = {
-          nix = {
-            command = "rnix-lsp";
-            filetypes = [ "nix" ];
-          };
-        };
       };
     };
-    extraPackages = with pkgs; [
-      # Coc Nix
-      nixfmt
-      rnix-lsp
-
-      # Coc Rust
-      rust-analyzer
-    ];
     plugins = with pkgs.vimPlugins; [
       coc-clangd
       coc-json
       coc-pyright
-      coc-rust-analyzer
       coc-yaml
       fzf-vim
 

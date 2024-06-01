@@ -6,7 +6,6 @@
     kubectl
     kubectl-doctor
     kubectl-tree
-    kubectl-view-allocations
     kubectx
     kubent
     kubernetes-helm
