@@ -9,7 +9,7 @@ let
 in
 {
   home.packages = with pkgs; [
-    (python310.withPackages (p: with p; [ ipython black ]))
+    (python3.withPackages (p: with p; [ ipython black ]))
     ansible
     apache-directory-studio
     awscli2
