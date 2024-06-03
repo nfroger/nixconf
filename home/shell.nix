@@ -19,6 +19,10 @@
       source <(kubectl completion zsh)
       complete -F __start_kubectl k
     '';
+    envExtra = ''
+      export MANPAGER='sh -c "col -bx | bat -l man -p"'
+      export MANROFFOPT="-c";
+    '';
   };
 
   programs.direnv = {

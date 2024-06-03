@@ -15,13 +15,6 @@
   home.sessionVariables = {
     EDITOR = "vim";
     VISUAL = "vim";
-    LESS_TERMCAP_mb = "[1;32m";
-    LESS_TERMCAP_md = "[1;32m";
-    LESS_TERMCAP_me = "[0m";
-    LESS_TERMCAP_se = "[0m";
-    LESS_TERMCAP_so = "[01;33m";
-    LESS_TERMCAP_ue = "[0m";
-    LESS_TERMCAP_us = "[1;4;31m";
     CLIFF_FIT_WIDTH = "1"; # for OpenStack CLI table width
   };
 
