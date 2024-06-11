@@ -111,6 +111,10 @@
         hostname = "bastion.cri-playground.iaas.epita.fr";
         user = "root";
       };
+      "lre-bastion" = {
+        hostname = "admin-svc.lre.iaas.epita.fr";
+        user = "root";
+      };
       "callisto" = {
         hostname = "10.201.4.10";
         user = "nicolas";
@@ -151,6 +155,10 @@
       };
       "*.cri_playground.openstack.epita.fr" = {
         proxyJump = "play-bastion";
+        user = "root";
+      };
+      "*.lre.openstack.epita.fr" = {
+        proxyJump = "lre-bastion";
         user = "root";
       };
       "*.3ie.fr" = {
