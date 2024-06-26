@@ -8,7 +8,8 @@
     ../../profiles/desktop.nix
     ../../profiles/docker.nix
 
-    nixos-hardware.nixosModules.common-cpu-intel
+    nixos-hardware.nixosModules.common-cpu-amd
+    nixos-hardware.nixosModules.common-cpu-amd-pstate
     nixos-hardware.nixosModules.common-pc
     nixos-hardware.nixosModules.common-pc-ssd
     nixos-hardware.nixosModules.common-gpu-amd
@@ -19,23 +20,23 @@
 
     bridges = {
       br0 = {
-        interfaces = [ "enp5s0" ];
+        interfaces = [ "eno1" ];
       };
     };
 
     interfaces = {
-      enp5s0.useDHCP = true;
+      eno1.useDHCP = true;
       br0.useDHCP = true;
     };
   };
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ehci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" "sr_mod" "alx" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "ehci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" "sr_mod" "r8169" ];
   boot.initrd.kernelModules = [ "dm-mod" "dm-crypt" "bridge" ];
-  boot.kernelModules = [ "kvm-intel" "vfio_pci" "vfio" "vfio_iommu_type1" "vfio_virqfd" ];
+  boot.kernelModules = [ "kvm-amd" "vfio_pci" "vfio" "vfio_iommu_type1" "vfio_virqfd" ];
   boot.extraModulePackages = [ ];
   boot.kernelParams = [];
   boot.extraModprobeConfig = ''
-    options kvm_intel nested=1
+    options kvm_amd nested=1
   '';
   boot.kernel.sysctl = {
     "net.ipv4.ip_forward" = 1;
