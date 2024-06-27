@@ -16,6 +16,7 @@
     EDITOR = "vim";
     VISUAL = "vim";
     CLIFF_FIT_WIDTH = "1"; # for OpenStack CLI table width
+    AWS_EC2_METADATA_DISABLED = "true";
   };
 
   programs.git = {
