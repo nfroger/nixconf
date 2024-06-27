@@ -12,13 +12,14 @@ in
     output = {
       DP-1 = {
         position = "0 0";
+        transform = "270";
       };
       DP-2 = {
-        position = "1920 0";
+        position = "1200 190";
       };
     };
-    workspaceOutputAssign = genWorkspaceAssign "DP-1" (builtins.genList (x: x + 1) 5)
-      ++ genWorkspaceAssign "DP-2" (builtins.genList (x: x + 6) 5);
+    workspaceOutputAssign = genWorkspaceAssign "DP-1" [ "11" ]
+      ++ genWorkspaceAssign "DP-2" (builtins.genList (x: x + 1) 5);
   };
 
   programs.ssh.matchBlocks."fw-cri".hostname = lib.mkForce "10.201.5.2";
