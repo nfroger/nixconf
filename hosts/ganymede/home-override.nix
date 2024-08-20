@@ -39,5 +39,18 @@
         }
       ];
     };
+    dockedWorkBigScreen = {
+      outputs = [
+        {
+          criteria = "eDP-1";
+          position = "0,360";
+        }
+        {
+          criteria = "Dell Inc. DELL P3222QE 8CMSXG3";
+          position = "1920,0";
+          scale = 1.5;
+        }
+      ];
+    };
   };
 }
