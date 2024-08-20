@@ -6,11 +6,6 @@
         tap = "enabled";
       };
     };
-    output = {
-      eDP-1 = {
-        scale = "1.25";
-      };
-    };
   };
 
   services.kanshi.profiles = {
