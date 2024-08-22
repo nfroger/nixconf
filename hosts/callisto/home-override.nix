@@ -15,7 +15,7 @@ in
         transform = "270";
       };
       DP-2 = {
-        position = "1200 190";
+        position = "1200 0";
       };
     };
     workspaceOutputAssign = genWorkspaceAssign "DP-1" [ "11" ]
