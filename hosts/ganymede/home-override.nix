@@ -34,15 +34,15 @@
         }
       ];
     };
-    dockedWorkBigScreen = {
+    dockedWork = {
       outputs = [
         {
           criteria = "eDP-1";
-          position = "0,360";
+          position = "2560,360";
         }
         {
-          criteria = "Dell Inc. DELL P3222QE 8CMSXG3";
-          position = "1920,0";
+          criteria = "Dell Inc. DELL P3222QE 1DMSXG3";
+          position = "0,0";
           scale = 1.5;
         }
       ];
