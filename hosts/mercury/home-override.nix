@@ -18,10 +18,10 @@ in
       };
     };
     workspaceOutputAssign = [
-        {
-            output = "HDMI-A-1";
-            workspace = "11";
-        }
+      {
+        output = "HDMI-A-1";
+        workspace = "11";
+      }
     ];
   };
 }
