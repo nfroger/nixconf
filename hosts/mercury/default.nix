@@ -1,4 +1,4 @@
-{ nixos-hardware, ... }:
+{ nixos-hardware, pkgs, ... }:
 
 {
   # Main desktop
@@ -35,7 +35,7 @@
   boot.initrd.kernelModules = [ "dm-mod" "dm-crypt" "bridge" ];
   boot.kernelModules = [ "kvm-amd" "vfio_pci" "vfio" "vfio_iommu_type1" "vfio_virqfd" ];
   boot.extraModulePackages = [ ];
-  boot.kernelParams = [];
+  boot.kernelParams = [ ];
   boot.extraModprobeConfig = ''
     options kvm_amd nested=1
   '';
@@ -79,6 +79,18 @@
         "/dev/rtc","/dev/hpet", "/dev/sev"
     ]
   '';
+
+  services.ollama = {
+    enable = true;
+    acceleration = "rocm";
+    package = pkgs.ollama-rocm;
+    environmentVariables = {
+      HSA_OVERRIDE_GFX_VERSION = "11.0.0";
+    };
+  };
+  environment.systemPackages = with pkgs; [
+    (btop.override { rocmSupport = true; })
+  ];
 
   system.stateVersion = "21.11";
 }

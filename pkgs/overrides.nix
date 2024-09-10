@@ -3,5 +3,6 @@
 final: prev: {
   inherit (pkgsUnstable)
     jetbrains
+    ollama-rocm
     ;
 }
