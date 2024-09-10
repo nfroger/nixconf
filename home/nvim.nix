@@ -21,7 +21,13 @@
       emmet-vim
       vim-polyglot
       nerdtree
-      vim-indent-guides
+      {
+        plugin = indent-blankline-nvim;
+        type = "lua";
+        config = ''
+          require("ibl").setup()
+        '';
+      }
       {
         plugin = vimtex;
         config = ''
