@@ -6,7 +6,6 @@
     ./nvim.nix
     ./packages.nix
     ./shell.nix
-    ./slrn.nix
     ./kubecli-packages.nix
   ];
 
