@@ -50,5 +50,6 @@ in
     vault
     virt-manager
     vscodium
+    mtr
   ];
 }
