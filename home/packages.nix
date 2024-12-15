@@ -17,7 +17,7 @@ in
     dynamips
     ffmpeg
     gimp
-    gnome.vinagre
+    remmina
     gns3-gui
     gns3-server
     gnumeric
