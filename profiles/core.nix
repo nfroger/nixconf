@@ -92,7 +92,10 @@
     fi
   '';
 
-  programs.ssh.startAgent = false;
+  programs.ssh = {
+    package = pkgs.openssh_gssapi;
+    startAgent = false;
+  };
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
