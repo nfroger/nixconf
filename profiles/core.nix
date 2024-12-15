@@ -162,7 +162,7 @@
     neovim
     ntfs3g
     p7zip
-    thunderbirdPackages.thunderbird-115
+    thunderbird
     tmux
     tree
     unzip
