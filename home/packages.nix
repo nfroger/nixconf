@@ -14,7 +14,6 @@ in
     apache-directory-studio
     awscli2
     discord
-    dotnet-sdk_7
     dynamips
     ffmpeg
     gimp
