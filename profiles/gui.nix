@@ -51,6 +51,7 @@
       waybar
       wdisplays
       wl-clipboard
+      wl-mirror
       xdg-desktop-portal-wlr
       xwayland
     ];
