@@ -10,7 +10,7 @@
     ../../profiles/docker.nix
     nixos-hardware.nixosModules.common-pc-laptop
     nixos-hardware.nixosModules.common-pc-laptop-ssd
-    nixos-hardware.nixosModules.dell-xps-15-9560-intel
+    nixos-hardware.nixosModules.dell-xps-15-9570-intel
   ];
 
   networking.hostName = "mars";
