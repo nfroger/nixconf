@@ -76,6 +76,7 @@
   services.printing.enable = true;
   services.smartd.enable = true;
   services.usbmuxd.enable = true;
+  services.flatpak.enable = true;
 
   virtualisation.libvirtd.enable = true;
   virtualisation.libvirtd.qemu.ovmf.enable = true;
