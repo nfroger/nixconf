@@ -49,7 +49,9 @@
       swayidle
       swaylock
       waybar
+      wayvnc
       wdisplays
+      wf-recorder
       wl-clipboard
       wl-mirror
       xdg-desktop-portal-wlr
