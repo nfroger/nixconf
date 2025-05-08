@@ -86,6 +86,7 @@
     package = pkgs.ollama-rocm;
     environmentVariables = {
       HSA_OVERRIDE_GFX_VERSION = "11.0.0";
+      OLLAMA_ORIGINS = "moz-extension://*";
     };
   };
   environment.systemPackages = with pkgs; [
