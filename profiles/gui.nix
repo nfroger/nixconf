@@ -1,6 +1,7 @@
 { pkgs, config, ... }:
 
 {
+  fonts.fontDir.enable = true;
   fonts.packages = with pkgs; [
     source-code-pro
     font-awesome
