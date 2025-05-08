@@ -46,7 +46,7 @@ in
     spotify
     tcpdump
     teams
-    vault
+    openbao
     virt-manager
     vscodium
     mtr
