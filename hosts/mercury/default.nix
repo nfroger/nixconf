@@ -92,6 +92,7 @@
   environment.systemPackages = with pkgs; [
     (btop.override { rocmSupport = true; })
   ];
+  services.open-webui.enable = true;
 
   system.stateVersion = "21.11";
 }
