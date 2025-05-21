@@ -64,6 +64,7 @@
     config.boot.kernelPackages.v4l2loopback
   ];
   boot.kernelModules = [ "v4l2loopback" ];
+  boot.tmp.cleanOnBoot = true;
 
   # Services
   services.avahi.enable = true;
