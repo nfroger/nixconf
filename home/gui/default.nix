@@ -29,11 +29,13 @@
 
   services.mako = {
     enable = true;
-    backgroundColor = "#424242";
-    borderRadius = 5;
-    borderSize = 0;
-    defaultTimeout = 10000;
-    padding = "10";
+    settings = {
+      background-color = "#424242";
+      border-radius = 5;
+      border-size = 0;
+      default-timeout = 10000;
+      padding = "10";
+    };
   };
 
   gtk = {

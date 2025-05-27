@@ -15,7 +15,7 @@
       kcx = "kubectx";
       os = "openstack";
     };
-    initExtra = ''
+    initContent = ''
       source <(kubectl completion zsh)
       complete -F __start_kubectl k
     '';
