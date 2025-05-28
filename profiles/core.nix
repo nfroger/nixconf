@@ -170,6 +170,7 @@
     yubikey-manager
     zathura
     zip
+    wireguard-tools
     (wrapFirefox firefox-unwrapped {
       extraPolicies = {
         CaptivePortal = false;
