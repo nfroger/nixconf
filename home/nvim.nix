@@ -109,7 +109,6 @@
       set t_Co=256
       set vb t_vb=".
       set smartcase
-      set browsedir=buffer
       set tw=80
       set wrap
       set mouse=a
