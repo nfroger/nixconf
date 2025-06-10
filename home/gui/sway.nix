@@ -176,7 +176,7 @@ in
             format = "{usage}% ";
           };
           memory = {
-            format = "{}% ";
+            format = "{}% ";
           };
           temperature = {
             hwmon-path = "";
@@ -195,31 +195,39 @@ in
           };
           network = {
             format-wifi = "{essid} ({signalStrength}%) ";
-            format-ethernet = "{ifname}: {ipaddr}/{cidr} ";
-            format-disconnected = "Disconnected ⚠";
+            format-ethernet = "󰈀";
+            format-disconnected = "󰌙";
+            tooltip-format-ethernet = "{ifname}: {ipaddr}/{cidr}";
             interval = 7;
           };
           pulseaudio = {
             format = "{volume}% {icon}";
             format-bluetooth = "{volume}% {icon}";
-            format-muted = "";
+            format-muted = "";
             format-icons = {
               default = [ "" "" ];
             };
-            on-click = "pavucontrol";
+            on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
+          };
+          idle_inhibitor = {
+            format = "{icon}";
+            format-icons = {
+              activated = "󰣮";
+              deactivated = "󰥿";
+            };
           };
         };
         modules-left = [ "sway/workspaces" "sway/mode" ];
         modules-center = [ "sway/window" ];
-        modules-right = [ "pulseaudio" "network" "cpu" "memory" "temperature" "battery" "clock" "tray" ];
+        modules-right = [ "idle_inhibitor" "pulseaudio" "network" "cpu" "memory" "temperature" "battery" "clock" "tray" ];
       }
     ];
     style = ''
       * {
           border: none;
           border-radius: 0;
-          font-family: Overpass,'Font Awesome 5', sans-serif;
-          font-size: 13px;
+          font-family: "Overpass Nerd Font", "Font Awesome 6 Free", "Font Awesome 6 Free Solid", sans-serif;
+          font-size: 15px;
           min-height: 0;
       }
 

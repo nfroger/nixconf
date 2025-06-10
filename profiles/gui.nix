@@ -10,6 +10,7 @@
     roboto
     fira
     ibm-plex
+    nerd-fonts.overpass
   ];
 
   environment.systemPackages = with pkgs; [
