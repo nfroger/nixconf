@@ -52,6 +52,14 @@
         };
       }
       {
+        condition = "gitdir:~/Documents/teachings/";
+        contents = {
+          user = {
+            email = "nico@cri.epita.fr";
+          };
+        };
+      }
+      {
         condition = "gitdir:~/Documents/epita/";
         contents = {
           user = {
