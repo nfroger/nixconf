@@ -50,5 +50,6 @@ in
     virt-manager
     vscodium
     mtr
+    minicom
   ];
 }
