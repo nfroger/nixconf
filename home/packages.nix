@@ -51,5 +51,6 @@ in
     vscodium
     mtr
     minicom
+    picocom
   ];
 }
