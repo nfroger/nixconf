@@ -52,5 +52,6 @@ in
     mtr
     minicom
     picocom
+    dive
   ];
 }
