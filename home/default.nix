@@ -83,7 +83,7 @@
 
       # CRI
       "fw-cri" = {
-        hostname = "91.243.117.211";
+        hostname = "91.243.117.1";
         user = "root";
       };
       "sw-core-cri" = {
