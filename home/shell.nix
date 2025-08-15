@@ -12,7 +12,7 @@
       ls = "ls -hN --color=auto --group-directories-first";
       k = "kubectl";
       kns = "kubens";
-      kcx = "kubectx";
+      kcx = "kubeswitch";
       os = "openstack";
     };
     initContent = ''

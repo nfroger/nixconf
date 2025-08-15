@@ -6,7 +6,7 @@
     kubectl
     kubectl-doctor
     kubectl-tree
-    kubectx
+    kubeswitch
     kubent
     kubernetes-helm
     kubespy
