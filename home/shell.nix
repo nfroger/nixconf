@@ -11,8 +11,8 @@
       cat = "bat";
       ls = "ls -hN --color=auto --group-directories-first";
       k = "kubectl";
-      kns = "kubens";
       kcx = "kubeswitch";
+      kns = "kubeswitch ns";
       os = "openstack";
     };
     initContent = ''
