@@ -17,7 +17,6 @@
     kube-bench
     popeye
     kube-score
-    kubent
     kube-capacity
   ];
 
