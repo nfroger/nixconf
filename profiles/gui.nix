@@ -1,6 +1,8 @@
 { pkgs, config, ... }:
 
 {
+  services.xserver.displayManager.gdm.enable = true;
+
   fonts.fontDir.enable = true;
   fonts.packages = with pkgs; [
     source-code-pro
