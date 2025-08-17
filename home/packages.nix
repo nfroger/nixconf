@@ -54,5 +54,6 @@ in
     picocom
     dive
     lingot
+    hoppscotch
   ];
 }
