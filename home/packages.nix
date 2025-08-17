@@ -53,5 +53,6 @@ in
     minicom
     picocom
     dive
+    lingot
   ];
 }
