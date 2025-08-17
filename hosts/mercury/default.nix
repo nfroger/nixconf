@@ -46,7 +46,6 @@
   boot.initrd.luks.devices = {
     cryptlvm = {
       device = "/dev/disk/by-uuid/d2a4a6f4-2c6c-4fb7-af8a-88d0a56bb262";
-      preLVM = false;
     };
   };
   hardware.enableRedistributableFirmware = true;

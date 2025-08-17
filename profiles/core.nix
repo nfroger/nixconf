@@ -65,6 +65,11 @@
   ];
   boot.kernelModules = [ "v4l2loopback" ];
   boot.tmp.cleanOnBoot = true;
+  boot.initrd.systemd.enable = true;
+  boot.plymouth = {
+    enable = true;
+    theme = "spinner";
+  };
 
   # Services
   services.avahi.enable = true;
