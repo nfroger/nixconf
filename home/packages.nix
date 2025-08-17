@@ -55,5 +55,6 @@ in
     dive
     lingot
     hoppscotch
+    dos2unix
   ];
 }
