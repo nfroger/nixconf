@@ -198,6 +198,7 @@ in
             format-ethernet = "󰈀";
             format-disconnected = "󰌙";
             tooltip-format-ethernet = "{ifname}: {ipaddr}/{cidr}";
+            tooltip-format-wifi = "{ifname}: {ipaddr}/{cidr}";
             interval = 7;
           };
           pulseaudio = {
