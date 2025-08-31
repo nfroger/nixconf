@@ -24,10 +24,9 @@
     userEmail = "nicolas@kektus.xyz";
     signing = {
       signByDefault = true;
-      key = "~/.ssh/id_rsa.pub";
+      key = "00BD4B2A4EBA035CC102E0B5B7D7C14018816976";
     };
     extraConfig = {
-      gpg.format = "ssh";
       format.signOff = true;
       pager.branch = false;
       pull.rebase = true;
