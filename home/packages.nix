@@ -13,6 +13,7 @@ in
     ansible
     apache-directory-studio
     awscli2
+    claude-code
     discord
     dynamips
     ffmpeg
