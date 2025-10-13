@@ -57,5 +57,6 @@ in
     lingot
     hoppscotch
     dos2unix
+    rclone
   ];
 }
