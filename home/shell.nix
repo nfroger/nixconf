@@ -52,4 +52,13 @@
       };
     };
   };
+
+  programs.atuin = {
+    enable = true;
+    enableZshIntegration = true;
+    daemon.enable = true;
+    settings = {
+      sync_address = "https://atuin.kektus.xyz";
+    };
+  };
 }
