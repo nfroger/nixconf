@@ -31,9 +31,29 @@
     };
   };
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ehci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" "sr_mod" "r8169" ];
-  boot.initrd.kernelModules = [ "dm-mod" "dm-crypt" "bridge" ];
-  boot.kernelModules = [ "kvm-amd" "vfio_pci" "vfio" "vfio_iommu_type1" "vfio_virqfd" ];
+  boot.initrd.availableKernelModules = [
+    "xhci_pci"
+    "ehci_pci"
+    "ahci"
+    "nvme"
+    "usbhid"
+    "usb_storage"
+    "sd_mod"
+    "sr_mod"
+    "r8169"
+  ];
+  boot.initrd.kernelModules = [
+    "dm-mod"
+    "dm-crypt"
+    "bridge"
+  ];
+  boot.kernelModules = [
+    "kvm-amd"
+    "vfio_pci"
+    "vfio"
+    "vfio_iommu_type1"
+    "vfio_virqfd"
+  ];
   boot.extraModulePackages = [ ];
   boot.kernelParams = [ ];
   boot.extraModprobeConfig = ''
@@ -50,20 +70,17 @@
   };
   hardware.enableRedistributableFirmware = true;
 
-  fileSystems."/" =
-    {
-      device = "/dev/disk/by-uuid/dec301b6-195d-4281-b6df-616c1d483fd2";
-      fsType = "ext4";
-    };
+  fileSystems."/" = {
+    device = "/dev/disk/by-uuid/dec301b6-195d-4281-b6df-616c1d483fd2";
+    fsType = "ext4";
+  };
 
-  fileSystems."/boot" =
-    {
-      device = "/dev/disk/by-uuid/0BEE-B0C9";
-      fsType = "vfat";
-    };
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/0BEE-B0C9";
+    fsType = "vfat";
+  };
 
-  swapDevices =
-    [{ device = "/dev/disk/by-uuid/0b76c53e-0964-44e4-8d4e-071abe9d7127"; }];
+  swapDevices = [{ device = "/dev/disk/by-uuid/0b76c53e-0964-44e4-8d4e-071abe9d7127"; }];
 
   virtualisation.libvirtd.allowedBridges = [ "br0" ];
   virtualisation.libvirtd.qemu.verbatimConfig = ''

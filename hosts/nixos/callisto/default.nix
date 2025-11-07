@@ -1,4 +1,8 @@
-{ pkgs, lib, nixos-hardware, ... }:
+{ pkgs
+, lib
+, nixos-hardware
+, ...
+}:
 
 {
   # Desktop at CRI
@@ -17,7 +21,10 @@
     hostName = "callisto";
 
     domain = "lab.cri.epita.fr";
-    nameservers = [ "91.243.117.210" "8.8.8.8" ];
+    nameservers = [
+      "91.243.117.210"
+      "8.8.8.8"
+    ];
 
     vlans = {
       "eno1.240" = {
@@ -59,11 +66,30 @@
   };
 
   # commented stuff is for pci passtrough vm, disabled because too many monitors
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ehci_pci" "ata_piix" "ahci" "usbhid" "usb_storage" "sd_mod" "sr_mod" ];
-  boot.initrd.kernelModules = [ "dm-mod" "dm-crypt" "e1000e" "bridge" ];
-  boot.kernelModules = [ "kvm-intel" /*"vfio_pci" "vfio" "vfio_iommu_type1" "vfio_virqfd"*/ ];
+  boot.initrd.availableKernelModules = [
+    "xhci_pci"
+    "ehci_pci"
+    "ata_piix"
+    "ahci"
+    "usbhid"
+    "usb_storage"
+    "sd_mod"
+    "sr_mod"
+  ];
+  boot.initrd.kernelModules = [
+    "dm-mod"
+    "dm-crypt"
+    "e1000e"
+    "bridge"
+  ];
+  boot.kernelModules = [
+    "kvm-intel" # "vfio_pci" "vfio" "vfio_iommu_type1" "vfio_virqfd"
+  ];
   boot.extraModulePackages = [ ];
-  boot.kernelParams = [ "intel_iommu=on" "iommu=pt" /*"vfio-pci.ids=10de:1c81,10de:0fb9"*/ ];
+  boot.kernelParams = [
+    "intel_iommu=on"
+    "iommu=pt" # "vfio-pci.ids=10de:1c81,10de:0fb9"
+  ];
   #options vfio-pci ids=10de:1c81,10de:0fb9
   boot.extraModprobeConfig = ''
     options kvm_intel nested=1
@@ -78,20 +104,17 @@
     };
   };
 
-  fileSystems."/" =
-    {
-      device = "/dev/disk/by-uuid/83792639-dbde-4742-a03b-6cdf6de0f51e";
-      fsType = "ext4";
-    };
+  fileSystems."/" = {
+    device = "/dev/disk/by-uuid/83792639-dbde-4742-a03b-6cdf6de0f51e";
+    fsType = "ext4";
+  };
 
-  fileSystems."/boot" =
-    {
-      device = "/dev/disk/by-uuid/E3D5-9873";
-      fsType = "vfat";
-    };
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/E3D5-9873";
+    fsType = "vfat";
+  };
 
-  swapDevices =
-    [{ device = "/dev/disk/by-uuid/1f3acca2-26d3-4349-ae67-1930f47afea8"; }];
+  swapDevices = [{ device = "/dev/disk/by-uuid/1f3acca2-26d3-4349-ae67-1930f47afea8"; }];
 
   virtualisation.libvirtd.allowedBridges = [ "br0" ];
   virtualisation.libvirtd.qemu.verbatimConfig = ''

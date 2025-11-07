@@ -15,8 +15,18 @@
 
   networking.hostName = "mars";
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
-  boot.initrd.kernelModules = [ "dm-snapshot" "dm-crypt" ];
+  boot.initrd.availableKernelModules = [
+    "xhci_pci"
+    "ahci"
+    "nvme"
+    "usb_storage"
+    "sd_mod"
+    "rtsx_pci_sdmmc"
+  ];
+  boot.initrd.kernelModules = [
+    "dm-snapshot"
+    "dm-crypt"
+  ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
   hardware.enableRedistributableFirmware = true;
@@ -27,20 +37,17 @@
     };
   };
 
-  fileSystems."/" =
-    {
-      device = "/dev/disk/by-uuid/f8e34f92-fadb-4890-9549-843319df82d0";
-      fsType = "ext4";
-    };
+  fileSystems."/" = {
+    device = "/dev/disk/by-uuid/f8e34f92-fadb-4890-9549-843319df82d0";
+    fsType = "ext4";
+  };
 
-  fileSystems."/boot" =
-    {
-      device = "/dev/disk/by-uuid/68B1-DABE";
-      fsType = "vfat";
-    };
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/68B1-DABE";
+    fsType = "vfat";
+  };
 
-  swapDevices =
-    [{ device = "/dev/disk/by-uuid/94319718-a960-4104-bb63-818845cefb9f"; }];
+  swapDevices = [{ device = "/dev/disk/by-uuid/94319718-a960-4104-bb63-818845cefb9f"; }];
 
   system.stateVersion = "21.05";
 }

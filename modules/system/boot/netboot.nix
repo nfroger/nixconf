@@ -1,4 +1,8 @@
-{ config, lib, pkgs, ... }:
+{ config
+, lib
+, pkgs
+, ...
+}:
 
 with lib;
 {
@@ -35,7 +39,11 @@ with lib;
       boot.loader.grub.enable = false;
 
       # !!! Hack - attributes expected by other modules.
-      environment.systemPackages = [ pkgs.grub2_efi pkgs.grub2 pkgs.syslinux ];
+      environment.systemPackages = [
+        pkgs.grub2_efi
+        pkgs.grub2
+        pkgs.syslinux
+      ];
 
       fileSystems = {
         "/" = {
@@ -127,7 +135,10 @@ with lib;
 
         # For http downloading
         network.enable = true;
-        network.udhcpc.extraArgs = [ "-t 10" "-A 10" ];
+        network.udhcpc.extraArgs = [
+          "-t 10"
+          "-A 10"
+        ];
         extraUtilsCommands = ''
           copy_bin_and_libs ${pkgs.curl}/bin/curl
           copy_bin_and_libs ${pkgs.rng-tools}/bin/rngd
@@ -212,8 +223,7 @@ with lib;
 
         contents = [
           {
-            object =
-              config.environment.etc."ssl/certs/ca-certificates.crt".source;
+            object = config.environment.etc."ssl/certs/ca-certificates.crt".source;
             symlink = "/etc/ssl/certs/ca-certificates.crt";
           }
         ];

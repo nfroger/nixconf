@@ -1,4 +1,11 @@
-{ config, pkgs, lib, nixpkgs, nixpkgsUnstable, nixpkgsMaster, ... }:
+{ config
+, pkgs
+, lib
+, nixpkgs
+, nixpkgsUnstable
+, nixpkgsMaster
+, ...
+}:
 
 {
   imports = [
@@ -8,7 +15,17 @@
 
   users.users.nicolas = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "libvirtd" "input" "kvm" "docker" "video" "dialout" "ubridge" "wireshark" ];
+    extraGroups = [
+      "wheel"
+      "libvirtd"
+      "input"
+      "kvm"
+      "docker"
+      "video"
+      "dialout"
+      "ubridge"
+      "wireshark"
+    ];
     shell = pkgs.zsh;
     hashedPassword = "$6$2xUbJKyOp0o0Hn2k$mFqM7kCQwqAjwdtuRZRQDrGPZrxV6coKoEHiW0m7AwET6LI9WOn6yT6oVumVbF0dkzfzRQk2/m4vxt45DTlHY/";
   };

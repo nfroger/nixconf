@@ -1,4 +1,14 @@
-{ lib, buildPythonPackage, fetchPypi, setuptools, click, pillow, ephem, pyshp, requests }:
+{ lib
+, buildPythonPackage
+, fetchPypi
+, setuptools
+, click
+, pillow
+, ephem
+, pyshp
+, requests
+,
+}:
 
 buildPythonPackage rec {
   pname = "termtrack";
