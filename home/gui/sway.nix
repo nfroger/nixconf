@@ -1,8 +1,12 @@
-{ pkgs, config, lib, ... }:
+{ pkgs
+, config
+, lib
+, ...
+}:
 
 let
   backgroundPicture = builtins.fetchurl {
-    url = https://s3.kektus.fr/kektus-uploads/DSC00554.jpg;
+    url = "https://s3.kektus.fr/kektus-uploads/DSC00554.jpg";
     sha256 = "0ggicqmfbh9cfwhjgyviaisbr93fqyvhz8wb0kc3kdff3hww4fp9";
   };
 
@@ -29,7 +33,9 @@ in
           { command = "${pkgs.mako}/bin/mako"; }
           { command = "systemctl --user import-environment XDG_SESSION_TYPE XDG_CURRENT_DESKTOP"; }
           { command = "dbus-update-activation-environment WAYLAND_DISPLAY"; }
-          { command = "systemctl --user import-environment WAYLAND_DISPLAY DISPLAY DBUS_SESSION_BUS_ADDRESS SWAYSOCK"; }
+          {
+            command = "systemctl --user import-environment WAYLAND_DISPLAY DISPLAY DBUS_SESSION_BUS_ADDRESS SWAYSOCK";
+          }
         ];
         terminal = "${pkgs.alacritty}/bin/alacritty";
         bars = [ ]; # empty because waybar is launched by systemd
@@ -102,27 +108,26 @@ in
           let
             modifier = config.wayland.windowManager.sway.config.modifier;
           in
-          lib.mkOptionDefault
-            {
-              "${modifier}+0" = "workspace 10";
-              "${modifier}+Shift+0" = "move container to workspace number 10";
-              "${modifier}+Delete" = "mode \"${sysmenu}\"";
-              "${modifier}+t" = "exec ${swaylockCommand}";
-              "${modifier}+c" = "exec firefox";
-              Print = "exec ${pkgs.grim}/bin/grim -g \"$(${pkgs.slurp}/bin/slurp)\" - | wl-copy";
-              "Shift+Print" = "exec ${pkgs.grim}/bin/grim - | wl-copy";
-              "${modifier}+p" = "exec ${pkgs.grim}/bin/grim -g \"$(${pkgs.slurp}/bin/slurp)\" - | wl-copy";
-              "${modifier}+Shift+p" = "exec ${pkgs.grim}/bin/grim - | wl-copy";
-              XF86MonBrightnessDown = "exec ${pkgs.brightnessctl}/bin/brightnessctl set 10%-";
-              XF86MonBrightnessUp = "exec ${pkgs.brightnessctl}/bin/brightnessctl set +10%";
-              XF86AudioMute = "exec ${pkgs.alsa-utils}/bin/amixer -q set Master toggle";
-              XF86AudioLowerVolume = "exec ${pkgs.alsa-utils}/bin/amixer -q set Master 5%-";
-              XF86AudioRaiseVolume = "exec ${pkgs.alsa-utils}/bin/amixer -q set Master 5%+";
-              XF86AudioMicMute = "exec ${pkgs.alsa-utils}/bin/amixer -q set Capture toggle";
-              XF86AudioPlay = "exec ${pkgs.playerctl}/bin/playerctl play-pause";
-              XF86AudioNext = "exec ${pkgs.playerctl}/bin/playerctl next";
-              XF86AudioPrev = "exec ${pkgs.playerctl}/bin/playerctl previous";
-            };
+          lib.mkOptionDefault {
+            "${modifier}+0" = "workspace 10";
+            "${modifier}+Shift+0" = "move container to workspace number 10";
+            "${modifier}+Delete" = "mode \"${sysmenu}\"";
+            "${modifier}+t" = "exec ${swaylockCommand}";
+            "${modifier}+c" = "exec firefox";
+            Print = "exec ${pkgs.grim}/bin/grim -g \"$(${pkgs.slurp}/bin/slurp)\" - | wl-copy";
+            "Shift+Print" = "exec ${pkgs.grim}/bin/grim - | wl-copy";
+            "${modifier}+p" = "exec ${pkgs.grim}/bin/grim -g \"$(${pkgs.slurp}/bin/slurp)\" - | wl-copy";
+            "${modifier}+Shift+p" = "exec ${pkgs.grim}/bin/grim - | wl-copy";
+            XF86MonBrightnessDown = "exec ${pkgs.brightnessctl}/bin/brightnessctl set 10%-";
+            XF86MonBrightnessUp = "exec ${pkgs.brightnessctl}/bin/brightnessctl set +10%";
+            XF86AudioMute = "exec ${pkgs.alsa-utils}/bin/amixer -q set Master toggle";
+            XF86AudioLowerVolume = "exec ${pkgs.alsa-utils}/bin/amixer -q set Master 5%-";
+            XF86AudioRaiseVolume = "exec ${pkgs.alsa-utils}/bin/amixer -q set Master 5%+";
+            XF86AudioMicMute = "exec ${pkgs.alsa-utils}/bin/amixer -q set Capture toggle";
+            XF86AudioPlay = "exec ${pkgs.playerctl}/bin/playerctl play-pause";
+            XF86AudioNext = "exec ${pkgs.playerctl}/bin/playerctl next";
+            XF86AudioPrev = "exec ${pkgs.playerctl}/bin/playerctl previous";
+          };
       };
     };
 
@@ -135,15 +140,18 @@ in
     };
 
     Service = {
-      ExecStart = ''${pkgs.swayidle}/bin/swayidle \
-        timeout 120 '${swaylockCommand}' \
-        timeout 200 '${pkgs.sway}/bin/swaymsg "output * dpms off"' \
-          resume '${pkgs.sway}/bin/swaymsg "output * dpms on"' \
-        before-sleep '${swaylockCommand}'
+      ExecStart = ''
+        ${pkgs.swayidle}/bin/swayidle \
+                timeout 120 '${swaylockCommand}' \
+                timeout 200 '${pkgs.sway}/bin/swaymsg "output * dpms off"' \
+                  resume '${pkgs.sway}/bin/swaymsg "output * dpms on"' \
+                before-sleep '${swaylockCommand}'
       '';
     };
 
-    Install = { WantedBy = [ "sway-session.target" ]; };
+    Install = {
+      WantedBy = [ "sway-session.target" ];
+    };
   };
 
   programs.waybar = {
@@ -191,7 +199,13 @@ in
               critical = 15;
             };
             format = "{capacity}% {icon}";
-            format-icons = [ "" "" "" "" "" ];
+            format-icons = [
+              ""
+              ""
+              ""
+              ""
+              ""
+            ];
           };
           network = {
             format-wifi = "{essid} ({signalStrength}%) ";
@@ -206,7 +220,10 @@ in
             format-bluetooth = "{volume}% {icon}";
             format-muted = "";
             format-icons = {
-              default = [ "" "" ];
+              default = [
+                ""
+                ""
+              ];
             };
             on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
           };
@@ -218,9 +235,22 @@ in
             };
           };
         };
-        modules-left = [ "sway/workspaces" "sway/mode" ];
+        modules-left = [
+          "sway/workspaces"
+          "sway/mode"
+        ];
         modules-center = [ "sway/window" ];
-        modules-right = [ "idle_inhibitor" "pulseaudio" "network" "cpu" "memory" "temperature" "battery" "clock" "tray" ];
+        modules-right = [
+          "idle_inhibitor"
+          "pulseaudio"
+          "network"
+          "cpu"
+          "memory"
+          "temperature"
+          "battery"
+          "clock"
+          "tray"
+        ];
       }
     ];
     style = ''

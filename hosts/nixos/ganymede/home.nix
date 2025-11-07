@@ -1,4 +1,14 @@
 {
+  imports = [
+    ../../../home
+    ../../../home/nixos.nix
+
+    ../../../home/packages/dev.nix
+    ../../../home/packages/gui.nix
+    ../../../home/packages/kubernetes.nix
+    ../../../home/packages/tools.nix
+  ];
+
   wayland.windowManager.sway.config = {
     input = {
       "1267:12809:ELAN067F:00_04F3:3209_Touchpad" = {

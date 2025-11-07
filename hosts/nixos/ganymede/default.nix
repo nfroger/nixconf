@@ -14,8 +14,18 @@
 
   networking.hostName = "ganymede";
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
-  boot.initrd.kernelModules = [ "dm-snapshot" "dm-crypt" ];
+  boot.initrd.availableKernelModules = [
+    "xhci_pci"
+    "ahci"
+    "nvme"
+    "usb_storage"
+    "sd_mod"
+    "rtsx_pci_sdmmc"
+  ];
+  boot.initrd.kernelModules = [
+    "dm-snapshot"
+    "dm-crypt"
+  ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
   hardware.enableRedistributableFirmware = true;
@@ -26,20 +36,17 @@
     };
   };
 
-  fileSystems."/" =
-    {
-      device = "/dev/disk/by-uuid/e85c21ef-8da2-4af7-ac7f-83c30a8d7e10";
-      fsType = "ext4";
-    };
+  fileSystems."/" = {
+    device = "/dev/disk/by-uuid/e85c21ef-8da2-4af7-ac7f-83c30a8d7e10";
+    fsType = "ext4";
+  };
 
-  fileSystems."/boot" =
-    {
-      device = "/dev/disk/by-uuid/698B-CB82";
-      fsType = "vfat";
-    };
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/698B-CB82";
+    fsType = "vfat";
+  };
 
-  swapDevices =
-    [{ device = "/dev/disk/by-uuid/75a10f00-4e55-4389-8d54-51e83f23fae7"; }];
+  swapDevices = [{ device = "/dev/disk/by-uuid/75a10f00-4e55-4389-8d54-51e83f23fae7"; }];
 
   system.stateVersion = "22.11";
 }

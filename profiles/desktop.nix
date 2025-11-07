@@ -7,7 +7,10 @@ in
     enable = true;
     port = 22;
     authorizedKeys = [ sshkeys.nicolas ];
-    hostKeys = [ "/etc/ssh/ssh_host_rsa_key" "/etc/ssh/ssh_host_ed25519_key" ];
+    hostKeys = [
+      "/etc/ssh/ssh_host_rsa_key"
+      "/etc/ssh/ssh_host_ed25519_key"
+    ];
   };
 
   services.lldpd.enable = true;

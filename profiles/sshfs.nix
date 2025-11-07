@@ -1,4 +1,8 @@
-{ config, pkgs, lib, ... }:
+{ config
+, pkgs
+, lib
+, ...
+}:
 
 let
   sshfsServer = "sshfs.kektus.xyz";
@@ -43,7 +47,10 @@ in
   security.pam.services.login.pamMount = true;
   security.pam.mount = {
     enable = true;
-    additionalSearchPaths = [ pkgs.sshfs pkgs.gocryptfs ];
+    additionalSearchPaths = [
+      pkgs.sshfs
+      pkgs.gocryptfs
+    ];
     # The extra path option is a workaround for
     # https://github.com/NixOS/nixpkgs/issues/201368
     extraVolumes = [

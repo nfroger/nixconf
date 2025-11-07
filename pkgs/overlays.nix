@@ -7,7 +7,8 @@ let
   # Values of set are functions that return derivations
   tlAllPackages = import ./top-level/all-packages.nix;
 
-  mkCallPackage = pkgArgs: final: prev:
+  mkCallPackage =
+    pkgArgs: final: prev:
     let
       defaultArgs = {
         callPackage = final: prev: final.callPackage;
@@ -15,13 +16,9 @@ let
       };
 
       p =
-        if builtins.isAttrs pkgArgs then
-          (defaultArgs // pkgArgs)
-        else
-          defaultArgs // { path = pkgArgs; };
+        if builtins.isAttrs pkgArgs then (defaultArgs // pkgArgs) else defaultArgs // { path = pkgArgs; };
     in
     (p.callPackage final prev) p.path (p.args final prev);
-
 
   mkOverlay = name: pkgArgs: final: prev: {
     "${name}" = mkCallPackage pkgArgs final prev;

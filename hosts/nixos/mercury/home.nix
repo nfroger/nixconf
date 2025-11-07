@@ -1,11 +1,22 @@
 let
-  genWorkspaceAssign = disp:
+  genWorkspaceAssign =
+    disp:
     map (n: {
       output = disp;
       workspace = toString n;
     });
 in
 {
+  imports = [
+    ../../../home
+    ../../../home/nixos.nix
+
+    ../../../home/packages/dev.nix
+    ../../../home/packages/gui.nix
+    ../../../home/packages/kubernetes.nix
+    ../../../home/packages/tools.nix
+  ];
+
   wayland.windowManager.sway.config = {
     output = {
       DP-2 = {
