@@ -1,4 +1,4 @@
-{ lib, buildPythonPackage, fetchPypi, click, pillow, ephem, pyshp, requests }:
+{ lib, buildPythonPackage, fetchPypi, setuptools, click, pillow, ephem, pyshp, requests }:
 
 buildPythonPackage rec {
   pname = "termtrack";
@@ -8,6 +8,9 @@ buildPythonPackage rec {
     inherit pname version;
     sha256 = "sha256-d9Y3wFppaOLhKtLiXEwbjIx8eIKdHYTTPnttqPUlfV8=";
   };
+  pyproject = true;
+
+  build-system = [ setuptools ];
 
   propagatedBuildInputs = [
     click
@@ -19,7 +22,6 @@ buildPythonPackage rec {
 
   preBuild = ''
     substituteInPlace setup.py --replace pyephem ephem
-
   '';
 
   meta = with lib; {
