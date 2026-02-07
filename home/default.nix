@@ -206,6 +206,16 @@
         proxyJump = "play-bastion";
         user = "root";
       };
+      "forge-dev" = {
+        hostname = "nico-dev.cri_playground.openstack.epita.fr";
+        proxyJump = "play-bastion";
+        user = "nicolas";
+        extraOptions = {
+          ForwardAgent = "yes";
+          RemoteForward = "/run/user/1001/gnupg/S.gpg-agent /Users/nicolas/.gnupg/S.gpg-agent.extra";
+          ExitOnForwardFailure = "yes";
+        };
+      };
       "*.lre.openstack.epita.fr" = {
         proxyJump = "lre-bastion";
         user = "root";
