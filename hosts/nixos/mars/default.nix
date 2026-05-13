@@ -4,10 +4,11 @@
   # Dell XPS 15 9570
 
   imports = [
-    ../../profiles/core.nix
-    ../../profiles/hamradio.nix
-    ../../profiles/laptop.nix
-    ../../profiles/docker.nix
+    ../../../profiles/core.nix
+    ../../../profiles/hamradio.nix
+    ../../../profiles/laptop.nix
+    ../../../profiles/docker.nix
+
     nixos-hardware.nixosModules.common-pc-laptop
     nixos-hardware.nixosModules.common-pc-laptop-ssd
     nixos-hardware.nixosModules.dell-xps-15-9570-intel

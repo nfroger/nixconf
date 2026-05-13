@@ -4,9 +4,10 @@
   # Lenovo Thinkpad L14
 
   imports = [
-    ../../profiles/core.nix
-    ../../profiles/laptop.nix
-    ../../profiles/docker.nix
+    ../../../profiles/core.nix
+    ../../../profiles/laptop.nix
+    ../../../profiles/docker.nix
+
     nixos-hardware.nixosModules.common-pc-laptop
     nixos-hardware.nixosModules.common-pc-laptop-ssd
     nixos-hardware.nixosModules.lenovo-thinkpad-l14-amd

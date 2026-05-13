@@ -4,8 +4,9 @@
   # Thinkpad X220
 
   imports = [
-    ../../profiles/core.nix
-    ../../profiles/laptop.nix
+    ../../../profiles/core.nix
+    ../../../profiles/laptop.nix
+
     nixos-hardware.nixosModules.common-cpu-intel-sandy-bridge
     nixos-hardware.nixosModules.common-pc-laptop
     nixos-hardware.nixosModules.common-pc-laptop-ssd

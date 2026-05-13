@@ -4,10 +4,10 @@
   # Main desktop
 
   imports = [
-    ../../profiles/core.nix
-    ../../profiles/desktop.nix
-    ../../profiles/docker.nix
-    ../../profiles/gaming.nix
+    ../../../profiles/core.nix
+    ../../../profiles/desktop.nix
+    ../../../profiles/docker.nix
+    ../../../profiles/gaming.nix
 
     nixos-hardware.nixosModules.common-cpu-amd
     nixos-hardware.nixosModules.common-cpu-amd-pstate

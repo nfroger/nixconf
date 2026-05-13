@@ -8,9 +8,9 @@
   # Desktop at CRI
 
   imports = [
-    ../../profiles/core.nix
-    ../../profiles/desktop.nix
-    ../../profiles/docker.nix
+    ../../../profiles/core.nix
+    ../../../profiles/desktop.nix
+    ../../../profiles/docker.nix
 
     nixos-hardware.nixosModules.common-cpu-intel
     nixos-hardware.nixosModules.common-pc
