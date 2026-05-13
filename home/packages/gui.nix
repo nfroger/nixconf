@@ -17,7 +17,6 @@ in
     inkscape
     jellyfin-mpv-shim
     jetbrains.idea
-    jetbrains.rider
     libreoffice
     slack
     spotify
