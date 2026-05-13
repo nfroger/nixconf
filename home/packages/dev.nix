@@ -13,6 +13,10 @@ in
     maven
     poetry
     uv
+
+    # Java
+    jdk
+    maven
   ];
 
   home.sessionVariables = {

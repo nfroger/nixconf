@@ -16,7 +16,7 @@ in
     gnumeric
     inkscape
     jellyfin-mpv-shim
-    jetbrains.idea-ultimate
+    jetbrains.idea
     jetbrains.rider
     libreoffice
     slack
