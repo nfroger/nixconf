@@ -21,6 +21,7 @@
       emmet-vim
       vim-polyglot
       nerdtree
+      gitsigns-nvim
       {
         plugin = indent-blankline-nvim;
         type = "lua";
