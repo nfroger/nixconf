@@ -13,6 +13,7 @@ in
     dive
     dos2unix
     ffmpeg
+    gnutar
     imagemagick
     inetutils
     ipcalc
