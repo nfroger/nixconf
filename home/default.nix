@@ -111,10 +111,12 @@
 
   programs.ssh = {
     enable = true;
-    forwardAgent = false;
-    controlMaster = "yes";
-    controlPersist = "10m";
     matchBlocks = {
+      "*" = {
+        forwardAgent = false;
+        controlMaster = "yes";
+        controlPersist = "10m";
+      };
       "*.kektus.xyz" = {
         user = "root";
       };
@@ -130,21 +132,6 @@
         extraOptions = {
           "HostKeyAlgorithms" = "+ssh-rsa";
           "KexAlgorithms" = "diffie-hellman-group14-sha1";
-        };
-      };
-      "sw-rack-d-cri" = {
-        hostname = "192.168.200.74";
-        user = "admin";
-        extraOptions = {
-          "HostKeyAlgorithms" = "+ssh-rsa";
-        };
-      };
-      "sw-mgmt-cri" = {
-        hostname = "192.168.200.241";
-        user = "manager";
-        extraOptions = {
-          "HostKeyAlgorithms" = "+ssh-rsa";
-          "KexAlgorithms" = "diffie-hellman-group1-sha1";
         };
       };
       "os-bastion" = {
@@ -193,11 +180,9 @@
       };
 
       "*.cri.epita.fr" = {
-        proxyJump = "fw-cri";
         user = "root";
       };
       "*.forge.epita.fr" = {
-        proxyJump = "fw-cri";
         user = "root";
       };
       "*.cri.openstack.epita.fr" = {
@@ -218,20 +203,17 @@
           ExitOnForwardFailure = "yes";
         };
       };
+      "mercury" = {
+        hostname = "10.10.220.10";
+        user = "nicolas";
+        extraOptions = {
+          ForwardAgent = "yes";
+          RemoteForward = "/run/user/1001/gnupg/S.gpg-agent /Users/nicolas/.gnupg/S.gpg-agent.extra";
+          ExitOnForwardFailure = "yes";
+        };
+      };
       "*.lre.openstack.epita.fr" = {
         proxyJump = "lre-bastion";
-        user = "root";
-      };
-      "*.3ie.fr" = {
-        proxyJump = "fw-cri";
-        user = "root";
-      };
-      "3ie-bastion" = {
-        hostname = "bastion.iaas.3ie.epita.fr";
-        user = "root";
-      };
-      "*.3ie.openstack.epita.fr" = {
-        proxyJump = "3ie-bastion";
         user = "root";
       };
     };
