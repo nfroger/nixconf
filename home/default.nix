@@ -60,13 +60,15 @@
 
   programs.git = {
     enable = true;
-    userName = "Nicolas Froger";
-    userEmail = "nicolas@kektus.xyz";
     signing = {
       signByDefault = true;
       key = "00BD4B2A4EBA035CC102E0B5B7D7C14018816976";
     };
-    extraConfig = {
+    settings = {
+      user = {
+        name = "Nicolas Froger";
+        email = "nicolas@kektus.fr";
+      };
       format.signOff = true;
       pager.branch = false;
       pull.rebase = true;
@@ -111,110 +113,104 @@
 
   programs.ssh = {
     enable = true;
-    matchBlocks = {
+    settings = {
       "*" = {
-        forwardAgent = false;
-        controlMaster = "yes";
-        controlPersist = "10m";
+        ForwardAgent = "no";
+        ControlMaster = "yes";
+        ControlPath = "~/.ssh/master-%r@%n:%p";
+        ControlPersist = "10m";
+        ServerAliveInterval = 0;
+        ServerAliveCountMax = 3;
+        Compression = "no";
+        AddKeysToAgent = "no";
+        HashKnownHosts = "no";
+        UserKnownHostsFile = "~/.ssh/known_hosts";
       };
+
       "*.kektus.xyz" = {
-        user = "root";
+        User = "root";
       };
 
       # CRI
       "fw-cri" = {
-        hostname = "91.243.117.1";
-        user = "root";
+        HostName = "91.243.117.1";
+        User = "root";
       };
       "sw-core-cri" = {
-        hostname = "192.168.200.240";
-        user = "manager";
-        extraOptions = {
-          "HostKeyAlgorithms" = "+ssh-rsa";
-          "KexAlgorithms" = "diffie-hellman-group14-sha1";
-        };
+        HostName = "192.168.200.240";
+        User = "manager";
+        HostKeyAlgorithms = "+ssh-rsa";
+        KexAlgorithms = "diffie-hellman-group14-sha1";
       };
       "os-bastion" = {
-        hostname = "bastion.iaas.cri.epita.fr";
-        user = "root";
-        port = 2222;
+        Hostname = "bastion.iaas.cri.epita.fr";
+        User = "root";
+        Port = 2222;
       };
       "play-bastion" = {
-        hostname = "bastion.cri-playground.iaas.epita.fr";
-        user = "root";
+        HostName = "bastion.cri-playground.iaas.epita.fr";
+        User = "root";
       };
       "lre-bastion" = {
-        hostname = "admin-svc.lre.iaas.epita.fr";
-        user = "root";
+        HostName = "admin-svc.lre.iaas.epita.fr";
+        User = "root";
       };
       "callisto" = {
-        hostname = "10.201.4.10";
-        user = "nicolas";
-        proxyJump = "fw-cri";
+        HostName = "10.201.4.10";
+        User = "nicolas";
+        ProxyJump = "fw-cri";
       };
 
       "gitlab.cri.epita.fr" = lib.hm.dag.entryBefore [ "*.cri.epita.fr" ] {
-        proxyJump = "none";
-        extraOptions = {
-          GSSAPIAuthentication = "yes";
-        };
+        ProxyJump = "none";
+        GSSAPIAuthentication = "yes";
       };
       "git.forge.epita.fr" = lib.hm.dag.entryBefore [ "*.forge.epita.fr" ] {
-        proxyJump = "none";
-        extraOptions = {
-          GSSAPIAuthentication = "yes";
-        };
+        ProxyJump = "none";
+        GSSAPIAuthentication = "yes";
       };
       "git.exam.forge.epita.fr" = lib.hm.dag.entryBefore [ "*.forge.epita.fr" ] {
-        proxyJump = "none";
-        extraOptions = {
-          GSSAPIAuthentication = "yes";
-        };
+        ProxyJump = "none";
+        GSSAPIAuthentication = "yes";
       };
       "ssh.cri.epita.fr" = lib.hm.dag.entryBefore [ "*.cri.epita.fr" ] {
-        proxyJump = "none";
-        extraOptions = {
-          GSSAPIAuthentication = "yes";
-          GSSAPIDelegateCredentials = "yes";
-        };
+        ProxyJump = "none";
+        GSSAPIAuthentication = "yes";
+        GSSAPIDelegateCredentials = "yes";
       };
 
       "*.cri.epita.fr" = {
-        user = "root";
+        User = "root";
       };
       "*.forge.epita.fr" = {
-        user = "root";
+        User = "root";
       };
       "*.cri.openstack.epita.fr" = {
-        proxyJump = "os-bastion";
-        user = "root";
+        ProxyJump = "os-bastion";
+        User = "root";
       };
       "*.cri_playground.openstack.epita.fr" = {
-        proxyJump = "play-bastion";
-        user = "root";
+        ProxyJump = "play-bastion";
+        User = "root";
       };
       "forge-dev" = {
-        hostname = "nico-dev.cri_playground.openstack.epita.fr";
-        proxyJump = "play-bastion";
-        user = "nicolas";
-        extraOptions = {
-          ForwardAgent = "yes";
-          RemoteForward = "/run/user/1001/gnupg/S.gpg-agent /Users/nicolas/.gnupg/S.gpg-agent.extra";
-          ExitOnForwardFailure = "yes";
-        };
+        HostName = "nico-dev.cri_playground.openstack.epita.fr";
+        ProxyJump = "play-bastion";
+        User = "nicolas";
+        ForwardAgent = "yes";
+        RemoteForward = "/run/user/1001/gnupg/S.gpg-agent /Users/nicolas/.gnupg/S.gpg-agent.extra";
+        ExitOnForwardFailure = "yes";
       };
       "mercury" = {
-        hostname = "10.10.220.10";
-        user = "nicolas";
-        extraOptions = {
-          ForwardAgent = "yes";
-          RemoteForward = "/run/user/1001/gnupg/S.gpg-agent /Users/nicolas/.gnupg/S.gpg-agent.extra";
-          ExitOnForwardFailure = "yes";
-        };
+        HostName = "10.10.220.10";
+        User = "nicolas";
+        ForwardAgent = "yes";
+        RemoteForward = "/run/user/1001/gnupg/S.gpg-agent /Users/nicolas/.gnupg/S.gpg-agent.extra";
+        ExitOnForwardFailure = "yes";
       };
       "*.lre.openstack.epita.fr" = {
-        proxyJump = "lre-bastion";
-        user = "root";
+        ProxyJump = "lre-bastion";
+        User = "root";
       };
     };
   };

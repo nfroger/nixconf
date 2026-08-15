@@ -31,6 +31,7 @@
       }
       {
         plugin = vimtex;
+        type = "viml";
         config = ''
           let g:latex_view_general_viewer = "zathura"
           let g:vimtex_view_method = "zathura"
@@ -39,6 +40,7 @@
       }
       {
         plugin = onedark-vim;
+        type = "viml";
         config = ''
           let g:onedark_color_overrides = {
                       \ "black": {"gui": "#1c1c1c", "cterm": "235", "cterm16": "0" }
