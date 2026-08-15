@@ -100,7 +100,11 @@
     (btop.override { rocmSupport = true; })
     (llama-cpp.override { rocmSupport = true; })
   ];
-  #services.open-webui.enable = true;
+  services.open-webui = {
+    enable = true;
+    host = "0.0.0.0";
+    openFirewall = true;
+  };
 
   system.stateVersion = "21.11";
 }
