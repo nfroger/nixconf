@@ -22,7 +22,7 @@ in
     minio-client
     mtr
     openbao
-    openldap
+    #openldap
     openssl
     opentofu
     packer
