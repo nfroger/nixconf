@@ -98,6 +98,7 @@
 
   environment.systemPackages = with pkgs; [
     (btop.override { rocmSupport = true; })
+    (llama-cpp.override { rocmSupport = true; })
   ];
   #services.open-webui.enable = true;
 
