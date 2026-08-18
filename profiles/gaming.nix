@@ -6,10 +6,10 @@
     extraPackages = with pkgs; [
       gamescope
       mangohud
-      xorg.libXcursor
-      xorg.libXi
-      xorg.libXinerama
-      xorg.libXScrnSaver
+      libxcursor
+      libxi
+      libxinerama
+      libxscrnsaver
       libpng
       libpulseaudio
       pipewire
