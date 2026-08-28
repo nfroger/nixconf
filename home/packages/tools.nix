@@ -33,5 +33,7 @@ in
     pwgen
     rclone
     tcpdump
+    tree
+    watch
   ];
 }
