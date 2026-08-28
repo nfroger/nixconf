@@ -180,7 +180,6 @@
     man-pages
     mpv
     ncdu
-    neofetch
     neovim
     ntfs3g
     p7zip
