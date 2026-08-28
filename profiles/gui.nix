@@ -27,8 +27,8 @@
     gtk_engines
     gsettings-desktop-schemas
     xdg-utils
-    xfce.thunar
-    xfce.thunar-volman
+    thunar
+    thunar-volman
   ];
 
   xdg.mime.enable = true;
@@ -102,5 +102,5 @@
   };
 
   services.tumbler.enable = true;
-  programs.thunar.plugins = with pkgs; [ xfce.tumbler ];
+  programs.thunar.plugins = with pkgs; [ tumbler ];
 }
