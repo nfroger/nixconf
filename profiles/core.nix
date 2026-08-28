@@ -87,6 +87,7 @@
     enable = true;
     theme = "spinner";
   };
+  boot.supportedFilesystems = [ "nfs" ];
 
   # Services
   services.avahi.enable = true;
