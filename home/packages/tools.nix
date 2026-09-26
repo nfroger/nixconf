@@ -13,6 +13,7 @@ in
     dive
     dos2unix
     ffmpeg
+    glab
     gnutar
     imagemagick
     inetutils
@@ -26,6 +27,7 @@ in
     openssl
     opentofu
     packer
+    parallel
     picocom
     pieVNC
     postgresql
