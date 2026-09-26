@@ -17,6 +17,10 @@ in
     # Java
     jdk
     maven
+
+    # js
+    nodejs
+    pnpm
   ];
 
   home.sessionVariables = {
